@@ -1,17 +1,67 @@
 ---
-
+import Layout from '../layouts/Layout.astro'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Olga Marrazzo — Portfolio">
+
+  <section class="py-16">
+
+    <h1 class="text-5xl font-bold leading-tight mb-4">
+      Ciao, sono Olga Marrazzo.
+    </h1>
+
+    <p class="text-xl text-gray-600 mb-8 max-w-xl">
+      Sto imparando a costruire prodotti digitali. Attualmente nel percorso Armonia
+      a Salerno — lavoro su Zenda.
+    </p>
+
+    <div class="flex gap-4">
+
+      <a 
+        href="/progetti"
+        class="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition"
+      >
+        Vedi i miei progetti
+      </a>
+
+      <a 
+        href="/contatti"
+        class="border border-gray-300 px-6 py-3 rounded-lg hover:border-gray-500 transition"
+      >
+        Scrivimi
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <section class="py-8 border-t border-gray-100">
+
+    <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-6">
+      Strumenti con cui lavoro
+    </h2>
+
+
+    <div class="flex flex-wrap gap-2">
+
+      {
+        [
+          "Astro",
+          "TypeScript",
+          "Tailwind",
+          "Git",
+          "GitHub",
+          "Cursor"
+        ].map((strumento) => (
+          <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-600">
+            {strumento}
+          </span>
+        ))
+      }
+
+    </div>
+
+  </section>
+
+</Layout>
