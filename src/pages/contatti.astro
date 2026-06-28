@@ -2,20 +2,66 @@
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="Contatti">
+<Layout title="Contatti — Olga Marrazzo">
 
-  <section class="py-12 max-w-xl">
+  <section class="pt-32 pb-20 max-w-7xl mx-auto px-6">
 
-    <h1 class="text-4xl font-bold mb-6">
-      Scrivimi
+    <p class="text-sm font-medium tracking-widest text-cyan-700 uppercase mb-3">
+      Contatti
+    </p>
+
+    <h1 class="text-4xl font-semibold text-sky-950 mb-4">
+      Parliamo insieme
     </h1>
 
-    <p class="text-gray-600 mb-8">
-      Rispondo di solito entro 24 ore.
+    <p class="text-lg text-slate-600 mb-12 max-w-xl">
+      Hai un progetto, una domanda o vuoi semplicemente connetterti? Rispondo di solito entro 24 ore.
     </p>
 
 
-    <form id="contact-form" class="flex flex-col gap-4">
+    <div class="flex gap-6 mb-10">
+
+      <a
+        href="https://www.linkedin.com/in/olga-marrazzo-5808402a5"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="
+        text-sm
+        text-slate-600
+        hover:text-cyan-700
+        transition
+        "
+      >
+        LinkedIn →
+      </a>
+
+
+      <a
+        href="https://github.com/olgamarrazzo"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="
+        text-sm
+        text-slate-600
+        hover:text-cyan-700
+        transition
+        "
+      >
+        GitHub →
+      </a>
+
+    </div>
+
+
+    <form
+      id="contact-form"
+      class="
+      flex
+      flex-col
+      gap-4
+      max-w-2xl
+      "
+    >
 
       <input
         id="nome"
@@ -23,7 +69,19 @@ import Layout from '../layouts/Layout.astro'
         type="text"
         placeholder="Nome"
         required
-        class="border rounded-lg px-4 py-3"
+        class="
+        border
+        border-slate-200
+        rounded-2xl
+        px-4
+        py-3
+        text-sm
+        text-slate-900
+        placeholder:text-slate-400
+        focus:outline-none
+        focus:border-cyan-700
+        transition
+        "
       />
 
 
@@ -33,7 +91,19 @@ import Layout from '../layouts/Layout.astro'
         type="email"
         placeholder="Email"
         required
-        class="border rounded-lg px-4 py-3"
+        class="
+        border
+        border-slate-200
+        rounded-2xl
+        px-4
+        py-3
+        text-sm
+        text-slate-900
+        placeholder:text-slate-400
+        focus:outline-none
+        focus:border-cyan-700
+        transition
+        "
       />
 
 
@@ -43,13 +113,34 @@ import Layout from '../layouts/Layout.astro'
         rows="5"
         placeholder="Messaggio"
         required
-        class="border rounded-lg px-4 py-3"
+        class="
+        border
+        border-slate-200
+        rounded-2xl
+        px-4
+        py-3
+        text-sm
+        text-slate-900
+        placeholder:text-slate-400
+        focus:outline-none
+        focus:border-cyan-700
+        transition
+        "
       ></textarea>
 
 
       <button
         type="submit"
-        class="bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition"
+        class="
+        bg-cyan-700
+        text-white
+        py-3
+        rounded-full
+        text-sm
+        font-medium
+        hover:bg-cyan-800
+        transition
+        "
       >
         Invia messaggio
       </button>
@@ -57,10 +148,12 @@ import Layout from '../layouts/Layout.astro'
 
       <p id="status" class="text-sm text-center hidden"></p>
 
+
     </form>
 
 
   </section>
+
 
 <script>
   const form = document.getElementById('contact-form');
@@ -80,8 +173,6 @@ import Layout from '../layouts/Layout.astro'
 
     const data = Object.fromEntries(new FormData(form));
 
-    console.log('DATI FORM:', data);
-
     const response = await fetch('/api/contatto', {
       method: 'POST',
       headers: {
@@ -90,17 +181,13 @@ import Layout from '../layouts/Layout.astro'
       body: JSON.stringify(data)
     });
 
-    console.log('STATUS:', response.status);
-
     if (response.ok) {
       form.reset();
-
-      status.textContent = 'Messaggio inviato. Ti risponderò presto!';
+      status.textContent = 'Messaggio inviato. Ti rispondo presto!';
       status.className = 'text-sm text-center text-green-600';
     } else {
-      status.textContent = 'Errore durante l’invio. Riprova.';
+      status.textContent = 'Errore durante l invio. Riprova.';
       status.className = 'text-sm text-center text-red-600';
-
       button.disabled = false;
       button.textContent = 'Invia messaggio';
     }
