@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+@theme {
+  --color-background:     #F8FAFC;
+  --color-brand:          #0F8BB8;
+  --color-brand-dark:     #0a6d8f;
+  --color-brand-light:    #E0F7FF;
+  --color-border:         #E2E8F0;
+  --color-ink:            #082F49;
+  --color-ink-muted:      #64748B;
+
+  --font-family-sans:  'Inter', sans-serif;
+  --font-family-serif: 'Playfair Display', serif;
+}
+
+
+
+.timeline-item {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  main {
+    animation: fadeIn 0.4s ease both;
+  }

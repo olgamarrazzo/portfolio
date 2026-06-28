@@ -15,20 +15,25 @@ import Footer from '../components/Footer.astro'
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-  </head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+    </head>
 
-  <body class="bg-white text-gray-900 font-sans">
+  <body class="font-[Inter] bg-slate-50 text-slate-900">
 
+  <div class="absolute top-0 left-0 right-0 z-50">
     <Nav />
+  </div>
 
+  <main class="w-full overflow-hidden">
+  <slot />
+</main>
 
-    <main class="max-w-4xl mx-auto px-6 py-12">
-      <slot />
-    </main>
+  <Footer />
 
-    <Footer />
+</body>
 
-
-  </body>
 </html>

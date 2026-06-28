@@ -1,67 +1,654 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+
+const timeline = [
+  {
+    anno: "2019",
+    titolo: "Diploma scientifico",
+    desc: "Un percorso fondato su matematica, metodo analitico e ragionamento strutturato. Qui nasce il mio interesse per la tecnologia e il modo in cui funzionano i sistemi complessi.",
+  },
+  {
+    anno: "2023",
+    titolo: "Laurea in Ingegneria Informatica",
+    desc: "Tre anni dedicati a programmazione, algoritmi, sviluppo software e architetture informatiche. Una base tecnica che oggi applico alla progettazione di prodotti digitali.",
+  },
+  {
+    anno: "2024 — oggi",
+    titolo: "Frontend Development & UI Design",
+    desc: "Sviluppo interfacce web moderne con Astro, TypeScript e Tailwind CSS, combinando precisione tecnica, design e attenzione all'esperienza utente.",
+    attuale: true,
+  },
+]
+
+const competenze = [
+  {
+    titolo: "Frontend Development",
+    desc: "Creo interfacce web moderne, veloci e responsive utilizzando tecnologie attuali.",
+    icona: "01"
+  },
+  {
+    titolo: "UI Design",
+    desc: "Curo struttura, gerarchia visiva e dettagli per creare esperienze chiare e intuitive.",
+    icona: "02"
+  },
+  {
+    titolo: "Problem Solving",
+    desc: "Il background informatico mi aiuta ad affrontare problemi complessi con metodo e precisione.",
+    icona: "03"
+  }
+]
+
+const strumenti = [
+  "Astro",
+  "TypeScript",
+  "Tailwind CSS",
+  "Figma",
+  "Git",
+  "GitHub",
+  "Vercel",
+  "Cursor"
+]
+
 ---
 
-<Layout title="Olga Marrazzo — Portfolio">
+<Layout title="Olga Marrazzo — Frontend Developer">
 
-  <section class="py-16">
+<!-- HERO -->
 
-    <h1 class="text-5xl font-bold leading-tight mb-4">
-      Ciao, sono Olga Marrazzo.
-    </h1>
+<section
+class="relative overflow-hidden"
+style="
+background-image:url('/hero-bg.png');
+background-size:cover;
+background-position:center;
+"
+>
 
-    <p class="text-xl text-gray-600 mb-8 max-w-xl">
-      Sto imparando a costruire prodotti digitali. Attualmente nel percorso Armonia
-      a Salerno — lavoro su Zenda.
-    </p>
+<Nav />
 
-    <div class="flex gap-4">
+<div class="absolute inset-0 bg-slate-50/50 backdrop-blur-[2px]"></div>
 
-      <a 
-        href="/progetti"
-        class="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition"
-      >
-        Vedi i miei progetti
-      </a>
+<div class="absolute -top-20 -right-20 w-[500px] h-[500px] rounded-full bg-cyan-300/20 blur-3xl"></div>
 
-      <a 
-        href="/contatti"
-        class="border border-gray-300 px-6 py-3 rounded-lg hover:border-gray-500 transition"
-      >
-        Scrivimi
-      </a>
-
-    </div>
-
-  </section>
+<div class="absolute bottom-0 left-1/3 w-96 h-96 rounded-full bg-sky-200/30 blur-3xl"></div>
 
 
-  <section class="py-8 border-t border-gray-100">
+<div class="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-32 lg:pt-32 lg:pb-40">
 
-    <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-6">
-      Strumenti con cui lavoro
-    </h2>
+<div class="grid lg:grid-cols-2 gap-20 items-center">
 
 
-    <div class="flex flex-wrap gap-2">
+<div>
 
-      {
-        [
-          "Astro",
-          "TypeScript",
-          "Tailwind",
-          "Git",
-          "GitHub",
-          "Cursor"
-        ].map((strumento) => (
-          <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-600">
-            {strumento}
-          </span>
-        ))
-      }
 
-    </div>
+<p class="uppercase tracking-[0.25em] text-sm font-medium text-cyan-700 mb-8">
+Frontend Developer · UI Design
+</p>
 
-  </section>
+
+<h1
+class="
+text-5xl
+lg:text-7xl
+font-semibold
+tracking-tight
+leading-[1.05]
+text-sky-950
+max-w-xl
+"
+>
+Creo esperienze digitali dove codice e design lavorano insieme.
+</h1>
+
+
+<p
+class="
+mt-8
+text-lg
+leading-relaxed
+text-slate-600
+max-w-xl
+"
+>
+Sono Olga Marrazzo, laureata in Ingegneria Informatica.
+Sviluppo siti web moderni e interfacce curate,
+unendo competenze tecniche e sensibilità per il design.
+</p>
+
+
+
+<div class="flex flex-wrap gap-4 mt-10">
+
+
+<a
+href="/progetti"
+class="
+px-8
+py-4
+rounded-full
+bg-cyan-700
+text-white
+font-medium
+shadow-lg
+hover:-translate-y-1
+hover:shadow-xl
+transition
+"
+>
+Vedi i progetti →
+</a>
+
+
+<a
+href="/contatti"
+class="
+px-8
+py-4
+rounded-full
+border
+border-slate-300
+text-sky-950
+hover:border-cyan-700
+hover:text-cyan-700
+transition
+"
+>
+Contattami
+</a>
+
+
+</div>
+
+</div>
+
+
+<div class="hidden lg:block">
+</div>
+
+
+</div>
+
+</div> 
+
+</section>
+
+
+<!-- COMPETENZE -->
+
+
+<section class="py-24">
+
+
+<div class="max-w-7xl mx-auto px-6">
+
+<p class="
+uppercase
+tracking-widest
+text-sm
+text-cyan-700
+mb-4
+">
+Approccio
+</p>
+
+
+<h2 class="
+text-4xl
+font-semibold
+text-sky-950
+mb-12
+">
+Un equilibrio tra codice e design
+</h2>
+
+
+
+<div class="grid md:grid-cols-3 gap-6">
+
+
+{competenze.map((item)=>(
+
+<div
+class="
+bg-white
+border
+border-slate-200
+rounded-3xl
+p-8
+hover:border-cyan-600
+transition
+"
+>
+
+
+<p class="text-cyan-700 font-medium mb-6">
+{item.icona}
+</p>
+
+
+<h3 class="
+text-xl
+font-semibold
+text-sky-950
+"
+>
+{item.titolo}
+</h3>
+
+
+<p class="
+mt-4
+text-slate-600
+leading-relaxed
+"
+>
+{item.desc}
+</p>
+
+
+</div>
+
+))}
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- PERCORSO TIMELINE -->
+
+
+<section class="py-24 border-t border-slate-200">
+
+
+<div class="max-w-6xl mx-auto px-6">
+
+<p class="
+uppercase
+tracking-widest
+text-sm
+text-cyan-700
+mb-4
+">
+Percorso
+</p>
+
+
+<h2
+class="
+text-4xl
+font-semibold
+text-sky-950
+mb-16
+"
+>
+Il mio percorso
+</h2>
+
+
+<p class="
+text-slate-600
+max-w-2xl
+mb-12
+"
+>
+Dalla formazione scientifica allo sviluppo di interfacce digitali moderne.
+</p>
+
+
+
+<div class="relative">
+
+
+<!-- linea centrale desktop -->
+
+<div
+class="
+hidden
+lg:block
+absolute
+left-1/2
+top-0
+bottom-0
+w-px
+bg-slate-200
+"
+></div>
+
+
+
+<div class="space-y-12">
+
+
+{timeline.map((item,index)=>(
+
+
+<div
+class="
+relative
+lg:grid
+lg:grid-cols-2
+lg:gap-16
+items-center
+"
+>
+
+
+<!-- punto timeline -->
+
+<div
+class="
+hidden
+lg:flex
+absolute
+left-1/2
+-translate-x-1/2
+w-5
+h-5
+rounded-full
+bg-cyan-700
+border-4
+border-white
+shadow
+"
+>
+</div>
+
+
+
+<div
+class={`
+${index % 2 === 0 
+? "lg:pr-8"
+: "lg:col-start-2 lg:pl-8"
+}
+`}
+>
+
+
+<div
+class="
+bg-white
+border
+border-slate-200
+rounded-3xl
+p-8
+hover:border-cyan-600
+transition
+"
+>
+
+
+<div class="
+flex
+items-center
+justify-between
+mb-5
+">
+
+
+<p class="
+text-cyan-700
+font-medium
+">
+{item.anno}
+</p>
+
+
+{item.attuale && (
+
+<span
+class="
+text-xs
+px-3
+py-1
+rounded-full
+bg-cyan-100
+text-cyan-700
+"
+>
+Attuale
+</span>
+
+)}
+
+
+</div>
+
+
+
+<h3
+class="
+text-xl
+font-semibold
+text-sky-950
+"
+>
+{item.titolo}
+</h3>
+
+
+
+<p
+class="
+mt-4
+text-slate-600
+leading-relaxed
+"
+>
+{item.desc}
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+))}
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- STACK TECNOLOGICO -->
+
+
+<section class="py-20 border-t border-slate-200">
+
+
+<div class="max-w-7xl mx-auto px-6">
+
+
+<p class="
+uppercase
+tracking-widest
+text-sm
+text-cyan-700
+mb-8
+">
+Tecnologie
+</p>
+
+
+
+<h2
+class="
+text-3xl
+font-semibold
+text-sky-950
+mb-8
+"
+>
+Strumenti che utilizzo
+</h2>
+
+
+
+<div class="flex flex-wrap gap-4">
+
+
+{strumenti.map((strumento)=>(
+
+
+<span
+class="
+px-5
+py-3
+rounded-full
+bg-white
+border
+border-slate-200
+text-slate-700
+hover:border-cyan-600
+hover:text-cyan-700
+transition
+"
+>
+{strumento}
+</span>
+
+
+))}
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- CTA -->
+
+
+<section class="py-24">
+
+<div
+class="
+max-w-7xl
+mx-auto
+px-6
+"
+>
+
+
+<div
+class="
+rounded-3xl
+bg-cyan-50
+border
+border-cyan-100
+p-12
+text-center
+"
+>
+
+
+<h2
+class="
+text-4xl
+font-semibold
+text-sky-950
+"
+>
+Hai un progetto?
+</h2>
+
+
+<p
+class="
+mt-4
+text-slate-600
+"
+>
+Scopri i miei lavori oppure contattami per costruire qualcosa insieme.
+</p>
+
+
+
+<div class="flex justify-center flex-wrap gap-4 mt-8">
+
+
+<a
+href="/progetti"
+class="
+px-8
+py-4
+rounded-full
+border
+border-cyan-700
+text-cyan-700
+hover:bg-cyan-700
+hover:text-white
+transition
+"
+>
+I miei progetti
+</a>
+
+
+
+<a
+href="/contatti"
+class="
+px-8
+py-4
+rounded-full
+bg-cyan-700
+text-white
+hover:bg-cyan-800
+transition
+"
+>
+Scrivimi
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
 
 </Layout>

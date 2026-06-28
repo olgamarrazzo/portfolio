@@ -1,53 +1,151 @@
 ---
 import Layout from '../layouts/Layout.astro'
+
+const progetti = [
+  {
+    titolo: "Portfolio personale",
+    desc: "Il sito che stai guardando. Progettato e costruito da zero con Astro, Tailwind CSS e TypeScript. Primo progetto concreto del mio percorso nel web design.",
+    tag: ["Astro", "Tailwind", "TypeScript"],
+    link: "https://github.com/olgamarrazzo",
+    attuale: true,
+  },
+  {
+    titolo: "Progetto 02",
+    desc: "In arrivo. Sto lavorando a nuovi progetti durante il corso.",
+    tag: [],
+    link: null,
+    attuale: false,
+  },
+  {
+    titolo: "Progetto 03",
+    desc: "In arrivo. Sto lavorando a nuovi progetti durante il corso.",
+    tag: [],
+    link: null,
+    attuale: false,
+  },
+]
 ---
 
-<Layout title="Progetti">
+<Layout title="Progetti — Olga Marrazzo">
 
-  <section class="py-12">
+  <section class="pt-32 pb-20 max-w-7xl mx-auto px-6">
 
-    <h1 class="text-4xl font-bold mb-8">
+    <p class="text-sm font-medium tracking-widest text-cyan-700 uppercase mb-3">
+      Lavori
+    </p>
+
+    <h1 class="text-4xl font-semibold text-sky-950 mb-4">
       I miei progetti
     </h1>
+
+    <p class="text-lg text-slate-600 mb-12 max-w-xl">
+      Sto costruendo il portfolio progetto per progetto. Torna presto per vedere i nuovi lavori.
+    </p>
 
 
     <div class="grid md:grid-cols-2 gap-6">
 
+      {progetti.map((p) => (
 
-      <article class="border rounded-xl p-6 hover:shadow-lg transition">
+        <article
+          style={p.attuale ? '' : 'opacity: 0.5;'}
+          class="
+          bg-white
+          border
+          border-slate-200
+          rounded-3xl
+          p-8
+          hover:border-cyan-600
+          transition
+          flex
+          flex-col
+          justify-between
+          gap-6
+          "
+        >
 
-        <h2 class="text-xl font-bold mb-3">
-          Portfolio personale
-        </h2>
+          <div>
 
-        <p class="text-gray-600 mb-4">
-          Sito web realizzato con Astro, TypeScript e Tailwind CSS.
-        </p>
+            <div class="flex justify-between items-start mb-4">
 
-        <span class="text-sm text-gray-500">
-          Astro · Tailwind · TypeScript
-        </span>
-
-      </article>
+              <h2 class="text-xl font-semibold text-sky-950">
+                {p.titolo}
+              </h2>
 
 
+              {!p.attuale && (
+                <span
+                  class="
+                  text-xs
+                  text-slate-500
+                  border
+                  border-slate-200
+                  rounded-full
+                  px-3
+                  py-1
+                  "
+                >
+                  Coming soon
+                </span>
+              )}
 
-      <article class="border rounded-xl p-6 hover:shadow-lg transition">
+            </div>
 
-        <h2 class="text-xl font-bold mb-3">
-          Secondo progetto
-        </h2>
 
-        <p class="text-gray-600 mb-4">
-          Descrizione del mio progetto futuro.
-        </p>
+            <p class="text-slate-600 leading-relaxed">
+              {p.desc}
+            </p>
 
-        <span class="text-sm text-gray-500">
-          JavaScript · API
-        </span>
+          </div>
 
-      </article>
 
+          <div class="flex justify-between items-center">
+
+            <div class="flex flex-wrap gap-2">
+
+              {p.tag.map((t) => (
+
+                <span
+                  class="
+                  text-xs
+                  bg-cyan-50
+                  text-cyan-700
+                  px-3
+                  py-1
+                  rounded-full
+                  "
+                >
+                  {t}
+                </span>
+
+              ))}
+
+            </div>
+
+
+            {p.link && (
+
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="
+                text-cyan-700
+                hover:underline
+                text-sm
+                "
+              >
+                GitHub →
+              </a>
+
+            )}
+
+          </div>
+
+
+        </article>
+
+      ))}
 
     </div>
 
