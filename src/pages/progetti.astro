@@ -8,6 +8,7 @@ const progetti = [
     tag: ["Astro", "Tailwind", "TypeScript"],
     link: "https://github.com/olgamarrazzo",
     attuale: true,
+    img: "/portfolio-preview.png",
   },
   {
     titolo: "Progetto 02",
@@ -15,6 +16,7 @@ const progetti = [
     tag: [],
     link: null,
     attuale: false,
+    img: null,
   },
   {
     titolo: "Progetto 03",
@@ -22,133 +24,170 @@ const progetti = [
     tag: [],
     link: null,
     attuale: false,
+    img: null,
   },
 ]
 ---
 
 <Layout title="Progetti — Olga Marrazzo">
 
-  <section class="pt-32 pb-20 max-w-7xl mx-auto px-6">
+<!-- Noise -->
+<div class="noise-page"></div>
 
-    <p class="text-sm font-medium tracking-widest text-cyan-700 uppercase mb-3">
-      Lavori
-    </p>
+<!-- Sfondo con glow -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+  <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-cyan-500/[0.04] blur-3xl"></div>
+  <div class="absolute bottom-0 -left-40 w-[400px] h-[400px] rounded-full bg-purple-500/[0.04] blur-3xl"></div>
+</div>
 
-    <h1 class="text-4xl font-semibold text-sky-950 mb-4">
-      I miei progetti
-    </h1>
+<section class="relative z-10 pt-32 pb-24 md:pt-40 md:pb-32 max-w-6xl mx-auto px-6">
 
-    <p class="text-lg text-slate-600 mb-12 max-w-xl">
+  <!-- Header -->
+  <div class="rv mb-14">
+    <span class="section-label">Lavori</span>
+    <h1 class="section-title">I miei progetti</h1>
+    <p class="mt-5 text-base text-white/60 max-w-xl leading-relaxed">
       Sto costruendo il portfolio progetto per progetto. Torna presto per vedere i nuovi lavori.
     </p>
+  </div>
 
+  <!-- Grid progetti -->
+  <div class="grid md:grid-cols-2 gap-6">
 
-    <div class="grid md:grid-cols-2 gap-6">
+            {progetti.map((p, i) => (
 
-      {progetti.map((p) => (
+      <article
+        class:list={[
+          "gc rv flex flex-col justify-between gap-0 overflow-hidden group",
+          !p.attuale && "opacity-60",
+          !p.img && "pointer-events-none",
+        ]}
+        style={`transition-delay: ${0.1 + i * 0.1}s`}
+      >
 
-        <article
-          style={p.attuale ? '' : 'opacity: 0.5;'}
-          class="
-          bg-white
-          border
-          border-slate-200
-          rounded-3xl
-          p-8
-          hover:border-cyan-600
-          transition
-          flex
-          flex-col
-          justify-between
-          gap-6
-          "
-        >
+        {p.img ? (
+          <div class="overflow-hidden bg-[#080414]">
+            <img
+              src={p.img}
+              alt={`Screenshot di ${p.titolo}`}
+              class="w-full h-auto object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div class="placeholder-progetto">
+            <div class="placeholder-bordo"></div>
+            <div class="placeholder-icona">
+              <iconify-icon icon="lucide:hammer" width="28"></iconify-icon>
+            </div>
+            <span class="placeholder-testo">In lavorazione</span>
+          </div>
+        )}
 
+        <div class="p-8 flex flex-col justify-between gap-6 flex-1">
           <div>
-
-            <div class="flex justify-between items-start mb-4">
-
-              <h2 class="text-xl font-semibold text-sky-950">
+            <div class="flex justify-between items-start mb-4 gap-4">
+              <h2 class="text-lg font-medium tracking-tight text-white">
                 {p.titolo}
               </h2>
-
-
-              {!p.attuale && (
-                <span
-                  class="
-                  text-xs
-                  text-slate-500
-                  border
-                  border-slate-200
-                  rounded-full
-                  px-3
-                  py-1
-                  "
-                >
-                  Coming soon
-                </span>
+              {p.attuale ? (
+                <span class="tag-attuale shrink-0">Attuale</span>
+              ) : (
+                <span class="tag-soon shrink-0">Coming soon</span>
               )}
-
             </div>
-
-
-            <p class="text-slate-600 leading-relaxed">
+            <p class="text-[14px] text-white/45 leading-relaxed">
               {p.desc}
             </p>
-
           </div>
 
-
-          <div class="flex justify-between items-center">
-
+          <div class="flex justify-between items-center flex-wrap gap-3">
             <div class="flex flex-wrap gap-2">
-
               {p.tag.map((t) => (
-
-                <span
-                  class="
-                  text-xs
-                  bg-cyan-50
-                  text-cyan-700
-                  px-3
-                  py-1
-                  rounded-full
-                  "
-                >
-                  {t}
-                </span>
-
+                <span class="tech-tag-sm">{t}</span>
               ))}
-
             </div>
-
-
             {p.link && (
-
               <a
                 href={p.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="
-                text-cyan-700
-                hover:underline
-                text-sm
-                "
+                class="inline-flex items-center gap-1.5 text-cyan-400 text-sm font-medium hover:gap-2.5 transition-all duration-300"
               >
-                GitHub →
+                GitHub
+                <iconify-icon icon="lucide:arrow-up-right" width="15"></iconify-icon>
               </a>
-
             )}
-
           </div>
+        </div>
 
+      </article>
 
-        </article>
+    ))}
 
-      ))}
+  </div>
 
-    </div>
+  <!-- CTA bottom -->
+  <div class="rv mt-16 text-center" style="transition-delay: 0.4s;">
+    <p class="text-sm text-white/30 mb-6">Vuoi collaborare a un progetto?</p>
+    <a href="/contatti" class="btn-primary">
+      <iconify-icon icon="lucide:send" width="16" class="mr-1.5"></iconify-icon>
+      Scrivimi
+    </a>
+  </div>
 
-  </section>
+</section>
 
 </Layout>
+
+<script>
+  const rvObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add('vis');
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.rv').forEach((el) => rvObs.observe(el));
+</script>
+
+<style>
+  /* ── Placeholder progetto in lavorazione ── */
+  .placeholder-progetto {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.015);
+    overflow: hidden;
+  }
+  .placeholder-bordo {
+    position: absolute;
+    inset: 16px;
+    border: 1.5px dashed rgba(0, 212, 255, 0.15);
+    border-radius: 12px;
+    animation: bordoGira 20s linear infinite;
+  }
+  @keyframes bordoGira {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .placeholder-icona {
+    color: rgba(0, 212, 255, 0.25);
+    animation: iconaPulse 3s ease-in-out infinite;
+  }
+  @keyframes iconaPulse {
+    0%, 100% { opacity: 0.25; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.08); }
+  }
+  .placeholder-testo {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+  }</style>
