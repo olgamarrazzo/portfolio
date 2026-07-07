@@ -29,7 +29,7 @@ const progetti = [
 ]
 ---
 
-<Layout title="Progetti — Olga Marrazzo">
+<Layout title="Progetti — Olga Marrazzo" description="Progetti realizzati da Olga Marrazzo: siti web, interfacce e design con Astro, Tailwind CSS e TypeScript.">
 
 <!-- Noise -->
 <div class="noise-page"></div>
@@ -78,7 +78,7 @@ const progetti = [
           <div class="placeholder-progetto">
             <div class="placeholder-bordo"></div>
             <div class="placeholder-icona">
-              <iconify-icon icon="lucide:hammer" width="28"></iconify-icon>
+              <iconify-icon icon="lucide:hammer" width="28" aria-hidden="true"></iconify-icon>
             </div>
             <span class="placeholder-testo">In lavorazione</span>
           </div>
@@ -115,7 +115,7 @@ const progetti = [
                 class="inline-flex items-center gap-1.5 text-cyan-400 text-sm font-medium hover:gap-2.5 transition-all duration-300"
               >
                 GitHub
-                <iconify-icon icon="lucide:arrow-up-right" width="15"></iconify-icon>
+                <iconify-icon icon="lucide:arrow-up-right" width="15" aria-hidden="true"></iconify-icon>
               </a>
             )}
           </div>
@@ -131,7 +131,7 @@ const progetti = [
   <div class="rv mt-16 text-center" style="transition-delay: 0.4s;">
     <p class="text-sm text-white/30 mb-6">Vuoi collaborare a un progetto?</p>
     <a href="/contatti" class="btn-primary">
-      <iconify-icon icon="lucide:send" width="16" class="mr-1.5"></iconify-icon>
+      <iconify-icon icon="lucide:send" width="16" class="mr-1.5" aria-hidden="true"></iconify-icon>
       Scrivimi
     </a>
   </div>
@@ -139,55 +139,3 @@ const progetti = [
 </section>
 
 </Layout>
-
-<script>
-  const rvObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) e.target.classList.add('vis');
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
-  );
-  document.querySelectorAll('.rv').forEach((el) => rvObs.observe(el));
-</script>
-
-<style>
-  /* ── Placeholder progetto in lavorazione ── */
-  .placeholder-progetto {
-    position: relative;
-    aspect-ratio: 16 / 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.015);
-    overflow: hidden;
-  }
-  .placeholder-bordo {
-    position: absolute;
-    inset: 16px;
-    border: 1.5px dashed rgba(0, 212, 255, 0.15);
-    border-radius: 12px;
-    animation: bordoGira 20s linear infinite;
-  }
-  @keyframes bordoGira {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  .placeholder-icona {
-    color: rgba(0, 212, 255, 0.25);
-    animation: iconaPulse 3s ease-in-out infinite;
-  }
-  @keyframes iconaPulse {
-    0%, 100% { opacity: 0.25; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.08); }
-  }
-  .placeholder-testo {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.2);
-  }</style>

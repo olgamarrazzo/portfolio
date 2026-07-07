@@ -32,7 +32,7 @@ const skills = [
   },
   {
     titolo: "UI Design & Figma",
-    desc: "Prototipazione ad alta fedeltà, creazione design system, gerarchia visiva e specifiche componente.",
+    desc: "Prototipazione ad alta fedelt&agrave;, creazione design system, gerarchia visiva e specifiche componente.",
     icona: "lucide:layout",
     livello: 78,
     color: "cyan",
@@ -95,20 +95,17 @@ const strumenti = [
 ]
 ---
 
-<Layout title="Olga Marrazzo — Frontend Developer">
-
-<!-- ═══════ NOISE OVERLAY ═══════ -->
-<div class="noise-overlay"></div>
+<Layout title="Olga Marrazzo — Frontend Developer" description="Portfolio di Olga Marrazzo, Frontend Developer. Creo esperienze digitali tra design e tecnologia con Astro, Tailwind CSS e TypeScript.">
 
 <!-- ═══════ FIXED HERO BACKGROUND ═══════ -->
 
-<div class="hero-bg" id="heroBg">
+<div class="hero-bg" id="heroBg" aria-hidden="true">
     <!-- IMMAGINE SFONDO -->
   <img
   class="hero-img"
   src="/hero-bg.jpeg"
-  alt="Scrivania futuristica con ologrammi e neon"
-  loading="eager"
+  alt=""
+  fetchpriority="high"
 />
   <div class="hero-overlay"></div>
   <div class="hero-vignette"></div>
@@ -136,7 +133,8 @@ const strumenti = [
   </h1>
 
   <p class="hero-tag">
-    Creo esperienze digitali tra design e tecnologia
+    Creo esperienze digitali dove design e tecnologia si fondono,
+    trasformando idee in interfacce web moderne e funzionali.
   </p>
 
   <div class="hero-buttons">
@@ -145,7 +143,8 @@ const strumenti = [
       <iconify-icon
         icon="lucide:arrow-down"
         width="16"
-        class="ml-1.5">
+        class="ml-1.5"
+        aria-hidden="true">
       </iconify-icon>
     </a>
 
@@ -155,7 +154,7 @@ const strumenti = [
   </div>
 </div>
 
-<div class="scroll-indicator" id="scrollInd">
+<div class="scroll-indicator" id="scrollInd" aria-hidden="true">
   <span class="scroll-ind-text">Scroll</span>
   <div class="scroll-line"></div>
 </div>
@@ -176,7 +175,7 @@ const strumenti = [
           <div class="gc p-7 rv" style={`transition-delay: ${0.08 + i * 0.08}s`}>
             <div class="flex items-center gap-3.5 mb-5">
               <div class={`w-10 h-10 rounded-xl ${item.color === 'cyan' ? 'bg-cyan-500/10' : 'bg-purple-500/10'} flex items-center justify-center shrink-0`}>
-                <iconify-icon icon={item.icona} width="20" class={item.color === 'cyan' ? 'text-cyan-400' : 'text-purple-400'}></iconify-icon>
+                <iconify-icon icon={item.icona} width="20" class={item.color === 'cyan' ? 'text-cyan-400' : 'text-purple-400'} aria-hidden="true"></iconify-icon>
               </div>
               <h3 class="text-[17px] font-medium tracking-tight text-white">{item.titolo}</h3>
             </div>
@@ -257,13 +256,12 @@ const strumenti = [
             Scopri i miei lavori oppure contattami per costruire qualcosa insieme.
           </p>
           <div class="flex flex-wrap justify-center gap-4 mt-10">
-                        <a href="/progetti" class="btn-outline">
-              <iconify-icon icon="lucide:folder-open" width="16" class="mr-1.5"></iconify-icon>
+            <a href="/progetti" class="btn-outline">
+              <iconify-icon icon="lucide:folder-open" width="16" class="mr-1.5" aria-hidden="true"></iconify-icon>
               I miei progetti
             </a>
-            </a>
             <a href="/contatti" class="btn-primary">
-              <iconify-icon icon="lucide:send" width="16" class="mr-1.5"></iconify-icon>
+              <iconify-icon icon="lucide:send" width="16" class="mr-1.5" aria-hidden="true"></iconify-icon>
               Scrivimi
             </a>
           </div>
@@ -275,17 +273,6 @@ const strumenti = [
 
 </Layout>
 <style>
-  /* ═══ NOISE (nome diverso da theme.css) ═══ */
-  .noise-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    pointer-events: none;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 256px;
-  }
-
   /* ═══ HERO BACKGROUND ═══ */
   .hero-bg {
     position: fixed;
@@ -454,15 +441,14 @@ const strumenti = [
     z-index: 10;
   }
   .hero-spacer {
-    height: 100vh;
+    height: 8vh;
   }
 
-  /* ═══ SECTION FADES (transizione world-scroll) ═══ */
-  .section-fade-1 { background: linear-gradient(to bottom, rgba(10,6,24,0.72), rgba(10,6,24,0.88)); }
+  /* ═══ SECTION FADES (hero-bg visibile dietro, copre gradualmente) ═══ */
+  .section-fade-1 { background: linear-gradient(to bottom, rgba(10,6,24,0.75), rgba(10,6,24,0.88)); }
   .section-fade-2 { background: linear-gradient(to bottom, rgba(10,6,24,0.88), rgba(10,6,24,0.94)); }
   .section-fade-3 { background: linear-gradient(to bottom, rgba(10,6,24,0.94), rgba(10,6,24,0.97)); }
   .section-fade-4 { background: rgba(10,6,24,0.98); }
-
   /* ═══ HORIZONTAL TIMELINE ═══ */
   .timeline-h {
     position: relative;
@@ -566,21 +552,21 @@ const strumenti = [
       padding-left: 6%;
       padding-right: 6%;
     }
-  }
-
-    @media (max-width: 768px) {
-    .hero-content {
-      padding-left: 6%;
-      padding-right: 6%;
-    }
     .hero-img {
       object-position: 65% 40%;
+      /* Disattiva Ken Burns su mobile per risparmiare GPU */
+      animation: none;
+      will-change: auto;
+    }
+    /* Disattiva particelle su mobile per performance */
+    .ptc {
+      display: none;
     }
   }
 </style>
 
 <script>
-
+  // ── Hero parallax & fade ──
   const scrollInd = document.getElementById('scrollInd');
   const heroC = document.getElementById('heroContent');
 
@@ -598,17 +584,7 @@ const strumenti = [
     }
   }, { passive: true });
 
-  // ── Reveal on scroll ──
-  const rvObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) e.target.classList.add('vis');
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
-  );
-  document.querySelectorAll('.rv').forEach((el) => rvObs.observe(el));
-    // ── Skill bars animation ──
+  // ── Skill bars animation (specifico di questa pagina) ──
   const skObs = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
@@ -624,4 +600,4 @@ const strumenti = [
     { threshold: 0.3 }
   );
   document.querySelectorAll('.sk-fill').forEach((el) => skObs.observe(el));
-  </script>
+</script>

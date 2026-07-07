@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="Contatti — Olga Marrazzo">
+<Layout title="Contatti — Olga Marrazzo" description="Contatta Olga Marrazzo per collaborazioni, progetti o domande. Risponde entro 24 ore.">
 
 <div class="noise-page"></div>
 
@@ -24,21 +24,21 @@ import Layout from '../layouts/Layout.astro'
   <div class="grid md:grid-cols-5 gap-8">
 
     <div class="md:col-span-3 rv" style="transition-delay: 0.08s;">
-      <form id="contact-form" class="flex flex-col gap-4.5">
+      <form id="contact-form" class="flex flex-col gap-4.5" novalidate>
         <div>
-          <label class="block text-[11px] font-medium tracking-[0.14em] uppercase text-white/35 mb-2">Nome</label>
-          <input id="nome" name="nome" type="text" placeholder="Il tuo nome" required class="fi" />
+          <label for="nome" class="block text-[11px] font-medium tracking-[0.14em] uppercase text-white/35 mb-2">Nome</label>
+          <input id="nome" name="nome" type="text" placeholder="Il tuo nome" required class="fi" autocomplete="name" />
         </div>
         <div>
-          <label class="block text-[11px] font-medium tracking-[0.14em] uppercase text-white/35 mb-2">Email</label>
-          <input id="email" name="email" type="email" placeholder="la-tua@email.com" required class="fi" />
+          <label for="email" class="block text-[11px] font-medium tracking-[0.14em] uppercase text-white/35 mb-2">Email</label>
+          <input id="email" name="email" type="email" placeholder="la-tua@email.com" required class="fi" autocomplete="email" />
         </div>
         <div>
-          <label class="block text-[11px] font-medium tracking-[0.14em] uppercase text-white/35 mb-2">Messaggio</label>
+          <label for="messaggio" class="block text-[11px] font-medium tracking-[0.14em] uppercase text-white/35 mb-2">Messaggio</label>
           <textarea id="messaggio" name="messaggio" rows="5" placeholder="Raccontami del tuo progetto..." required class="fi" style="resize: none;"></textarea>
         </div>
         <button type="submit" class="btn-primary w-full md:w-auto" id="subBtn">Invia messaggio</button>
-        <p id="status" class="text-sm text-center hidden"></p>
+        <p id="status" class="text-sm text-center hidden" aria-live="polite"></p>
       </form>
     </div>
 
@@ -48,28 +48,28 @@ import Layout from '../layouts/Layout.astro'
           <h3 class="text-lg font-medium tracking-tight text-white mb-6">Info</h3>
           <div class="space-y-5">
             <div class="flex items-start gap-3">
-              <iconify-icon icon="lucide:mail" width="17" class="text-cyan-400 mt-0.5 shrink-0"></iconify-icon>
+              <iconify-icon icon="lucide:mail" width="17" class="text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
               <div>
                 <p class="text-[11px] text-white/35 mb-0.5">Email</p>
                 <a href="mailto:olgamarrazzoit@gmail.com" class="text-sm text-white/75 hover:text-cyan-400 transition-colors duration-300">olgamarrazzoit@gmail.com</a>
               </div>
             </div>
             <div class="flex items-start gap-3">
-              <iconify-icon icon="lucide:map-pin" width="17" class="text-cyan-400 mt-0.5 shrink-0"></iconify-icon>
+              <iconify-icon icon="lucide:map-pin" width="17" class="text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
               <div>
                 <p class="text-[11px] text-white/35 mb-0.5">Posizione</p>
                 <p class="text-sm text-white/75">Italia</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
-              <iconify-icon icon="lucide:briefcase" width="17" class="text-cyan-400 mt-0.5 shrink-0"></iconify-icon>
+              <iconify-icon icon="lucide:briefcase" width="17" class="text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
               <div>
-                <p class="text-[11px] text-white/35 mb-0.5">Disponibilità</p>
+                <p class="text-[11px] text-white/35 mb-0.5">Disponibilit&agrave;</p>
                 <p class="text-sm text-white/75">Disponibile per collaborazioni e progetti</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
-              <iconify-icon icon="lucide:clock" width="17" class="text-cyan-400 mt-0.5 shrink-0"></iconify-icon>
+              <iconify-icon icon="lucide:clock" width="17" class="text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
               <div>
                 <p class="text-[11px] text-white/35 mb-0.5">Risposta</p>
                 <p class="text-sm text-white/75">Entro 24 ore</p>
@@ -80,11 +80,11 @@ import Layout from '../layouts/Layout.astro'
         <div class="mt-8 pt-5 border-t border-white/5">
           <p class="text-[11px] text-white/25 mb-3.5">Social</p>
           <div class="flex gap-4">
-            <a href="https://www.linkedin.com/in/olga-marrazzo-5808402a5" target="_blank" rel="noopener noreferrer" class="soc-icon text-white/35 text-[19px] hover:text-cyan-400">
-              <iconify-icon icon="mdi:linkedin"></iconify-icon>
+            <a href="https://www.linkedin.com/in/olga-marrazzo-5808402a5" target="_blank" rel="noopener noreferrer" aria-label="Profilo LinkedIn" class="soc-icon text-white/35 text-[19px] hover:text-cyan-400">
+              <iconify-icon icon="mdi:linkedin" aria-hidden="true"></iconify-icon>
             </a>
-            <a href="https://github.com/olgamarrazzo" target="_blank" rel="noopener noreferrer" class="soc-icon text-white/35 text-[19px] hover:text-cyan-400">
-              <iconify-icon icon="mdi:github"></iconify-icon>
+            <a href="https://github.com/olgamarrazzo" target="_blank" rel="noopener noreferrer" aria-label="Profilo GitHub" class="soc-icon text-white/35 text-[19px] hover:text-cyan-400">
+              <iconify-icon icon="mdi:github" aria-hidden="true"></iconify-icon>
             </a>
           </div>
         </div>
@@ -98,16 +98,7 @@ import Layout from '../layouts/Layout.astro'
 </Layout>
 
 <script>
-  const rvObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) e.target.classList.add('vis');
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
-  );
-  document.querySelectorAll('.rv').forEach((el) => rvObs.observe(el));
-
+  // ── Form handling ──
   const form = document.getElementById('contact-form');
   const status = document.getElementById('status');
   const subBtn = document.getElementById('subBtn');
@@ -116,7 +107,7 @@ import Layout from '../layouts/Layout.astro'
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       subBtn.disabled = true;
-      subBtn.textContent = 'Invio in corso…';
+      subBtn.textContent = 'Invio in corso\u2026';
       const data = Object.fromEntries(new FormData(form));
       try {
         const response = await fetch('/api/contatto', {
@@ -128,7 +119,8 @@ import Layout from '../layouts/Layout.astro'
           form.reset();
           status.textContent = 'Messaggio inviato! Ti rispondo presto.';
           status.className = 'form-ok text-sm text-center';
-          subBtn.textContent = 'Inviato ✓';
+          subBtn.textContent = 'Inviato \u2713';
+          subBtn.style.background = 'linear-gradient(to right, rgb(103 232 249), rgb(217 70 239))';
         } else {
           status.textContent = 'Errore durante l\'invio. Riprova.';
           status.className = 'form-err text-sm text-center';
