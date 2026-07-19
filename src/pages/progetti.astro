@@ -1,141 +1,703 @@
 ---
+
 import Layout from '../layouts/Layout.astro'
+import Background from '../components/Background.astro'
+import BloomFlower from '../components/BloomFlower.astro'
+import ProjectModal from '../components/ProjectModal.astro'
 
 const progetti = [
   {
-    titolo: "Portfolio personale",
-    desc: "Il sito che stai guardando. Progettato e costruito da zero con Astro, Tailwind CSS e TypeScript. Primo progetto concreto del mio percorso nel web design.",
-    tag: ["Astro", "Tailwind", "TypeScript"],
-    link: "https://github.com/olgamarrazzo",
-    attuale: true,
-    img: "/portfolio-preview.png",
-  },
+  id: 1,
+  titolo: "Portfolio personale",
+
+  stato: "completed",
+
+  descrizione:
+    "Portfolio personale progettato e sviluppato da zero per presentare il mio percorso come Front-end Developer e UX/UI Designer.",
+
+
+  obiettivo:
+    "Creare un'esperienza digitale moderna che unisse design, interazione e sviluppo front-end, evitando il classico portfolio statico.",
+
+
+  approccio:
+    "Ho progettato l'interfaccia in Figma, definito una struttura responsive e sviluppato componenti riutilizzabili con Astro, curando animazioni, micro-interazioni e performance.",
+
+    ruolo: [
+      "UX/UI Design",
+      "Front-end Development",
+      "Interaction Design"
+    ],
+
+  tecnologie: [
+  "Astro 6",
+  "TypeScript",
+  "Tailwind CSS",
+  "Git / GitHub",
+  "Vercel",
+  "Responsive Design"
+],
+
+
+  competenze: [
+  "Component architecture",
+  "Design system",
+  "Micro-interactions",
+  "UX principles",
+  "Performance optimization",
+  "Accessibility",
+  "SEO tecnico"
+],
+
+
+  github:
+    "https://github.com/olgamarrazzo",
+
+
+  immagine:
+    "/portfolio-preview.png"
+},
+
   {
-    titolo: "Progetto 02",
-    desc: "In arrivo. Sto lavorando a nuovi progetti durante il corso.",
-    tag: [],
-    link: null,
-    attuale: false,
-    img: null,
-  },
-  {
-    titolo: "Progetto 03",
-    desc: "In arrivo. Sto lavorando a nuovi progetti durante il corso.",
-    tag: [],
-    link: null,
-    attuale: false,
-    img: null,
-  },
+  id: 2,
+  titolo: "Ora Energia",
+  stato: "development",
+  descrizione:
+    "Un'esperienza digitale immersiva per un'azienda di impianti elettrici, con storytelling visivo, animazioni e interazioni moderne.",
+  tecnologie: ["Astro", "Three.js", "UX/UI"],
+  github: null,
+  demo: null,
+  immagine: null,
+},
+
+{
+  id: 3,
+  titolo: "Nuovo progetto",
+  stato: "concept",
+  descrizione:
+    "Una nuova idea sta prendendo forma.",
+  tecnologie: [],
+  github: null,
+  demo: null,
+  immagine: null,
+},
 ]
 ---
+<Layout 
+  title="Progetti — Olga Marrazzo"
+  description="Progetti realizzati da Olga Marrazzo: esperienze digitali, interfacce e sviluppo front-end."
+>
+<Background />
 
-<Layout title="Progetti — Olga Marrazzo" description="Progetti realizzati da Olga Marrazzo: siti web, interfacce e design con Astro, Tailwind CSS e TypeScript.">
+<section
+class="relative z-10 pt-32 pb-24 md:pt-40 md:pb-32 max-w-6xl mx-auto px-6"
+>
 
-<!-- Noise -->
-<div class="noise-page"></div>
 
-<!-- Sfondo con glow -->
-<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-  <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-cyan-500/[0.04] blur-3xl"></div>
-  <div class="absolute bottom-0 -left-40 w-[400px] h-[400px] rounded-full bg-purple-500/[0.04] blur-3xl"></div>
+<!-- Header -->
+
+<div class="text-center max-w-3xl mx-auto mb-20 rv">
+
+
+<span class="section-label">
+  I miei progetti
+</span>
+
+
+<h1 class="section-title mt-5">
+  Ogni progetto nasce da un'idea,
+  cresce con cura e prende forma
+  attraverso il codice.
+</h1>
+
+
+<p class="mt-8 text-base text-white/55 leading-relaxed">
+  Alcuni progetti sono già sbocciati,
+  altri stanno ancora crescendo.
+  Ogni esperienza rappresenta una nuova tappa
+  del mio percorso nel mondo del web design.
+</p>
+
+
 </div>
 
-<section class="relative z-10 pt-32 pb-24 md:pt-40 md:pb-32 max-w-6xl mx-auto px-6">
 
-  <!-- Header -->
-  <div class="rv mb-14">
-    <span class="section-label">Lavori</span>
-    <h1 class="section-title">I miei progetti</h1>
-    <p class="mt-5 text-base text-white/60 max-w-xl leading-relaxed">
-      Sto costruendo il portfolio progetto per progetto. Torna presto per vedere i nuovi lavori.
-    </p>
-  </div>
 
-  <!-- Grid progetti -->
-  <div class="grid md:grid-cols-2 gap-6">
+<!-- Projects -->
 
-            {progetti.map((p, i) => (
+<div class="grid md:grid-cols-2 gap-8">
 
-      <article
-        class:list={[
-          "gc rv flex flex-col justify-between gap-0 overflow-hidden group",
-          !p.attuale && "opacity-60",
-          !p.img && "pointer-events-none",
-        ]}
-        style={`transition-delay: ${0.1 + i * 0.1}s`}
-      >
 
-        {p.img ? (
-          <div class="overflow-hidden bg-[#080414]">
-            <img
-              src={p.img}
-              alt={`Screenshot di ${p.titolo}`}
-              class="w-full h-auto object-contain transition-transform duration-700 ease-out group-hover:scale-105"
-              loading="lazy"
-            />
-          </div>
-        ) : (
-          <div class="placeholder-progetto">
-            <div class="placeholder-bordo"></div>
-            <div class="placeholder-icona">
-              <iconify-icon icon="lucide:hammer" width="28" aria-hidden="true"></iconify-icon>
-            </div>
-            <span class="placeholder-testo">In lavorazione</span>
-          </div>
-        )}
+{progetti.map((p, i) => (
 
-        <div class="p-8 flex flex-col justify-between gap-6 flex-1">
-          <div>
-            <div class="flex justify-between items-start mb-4 gap-4">
-              <h2 class="text-lg font-medium tracking-tight text-white">
-                {p.titolo}
-              </h2>
-              {p.attuale ? (
-                <span class="tag-attuale shrink-0">Attuale</span>
-              ) : (
-                <span class="tag-soon shrink-0">Coming soon</span>
-              )}
-            </div>
-            <p class="text-[14px] text-white/45 leading-relaxed">
-              {p.desc}
-            </p>
-          </div>
+<article
 
-          <div class="flex justify-between items-center flex-wrap gap-3">
-            <div class="flex flex-wrap gap-2">
-              {p.tag.map((t) => (
-                <span class="tech-tag-sm">{t}</span>
-              ))}
-            </div>
-            {p.link && (
-              <a
-                href={p.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 text-cyan-400 text-sm font-medium hover:gap-2.5 transition-all duration-300"
-              >
-                GitHub
-                <iconify-icon icon="lucide:arrow-up-right" width="15" aria-hidden="true"></iconify-icon>
-              </a>
-            )}
-          </div>
-        </div>
+data-project={
+  p.stato === "completed"
+  ? JSON.stringify(p)
+  : undefined
+}
 
-      </article>
+class:list={[
+  "group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-cyan-300/30",
 
-    ))}
+  p.stato === "completed"
+  ? "cursor-pointer"
+  : "cursor-default"
 
-  </div>
+]}
 
-  <!-- CTA bottom -->
-  <div class="rv mt-16 text-center" style="transition-delay: 0.4s;">
-    <p class="text-sm text-white/30 mb-6">Vuoi collaborare a un progetto?</p>
-    <a href="/contatti" class="btn-primary">
-      <iconify-icon icon="lucide:send" width="16" class="mr-1.5" aria-hidden="true"></iconify-icon>
-      Scrivimi
-    </a>
-  </div>
+>
+
+
+<!-- Immagine -->
+
+{p.immagine ? (
+
+<div class="overflow-hidden">
+
+<img
+
+src={p.immagine}
+
+alt={`Screenshot ${p.titolo}`}
+
+class="
+w-full
+aspect-[16/10]
+object-cover
+transition-transform
+duration-700
+group-hover:scale-105
+"
+
+/>
+
+</div>
+
+
+) : (
+
+
+<div
+class="
+relative
+h-[260px]
+flex
+flex-col
+items-center
+justify-center
+gap-5
+"
+>
+
+<BloomFlower />
+
+
+<p class="text-sm tracking-wide text-white/40">
+In sviluppo
+</p>
+
+
+</div>
+
+
+)}
+
+
+
+<!-- Contenuto -->
+
+<div class="p-8">
+
+
+<div class="flex justify-between items-start gap-4 mb-5">
+
+
+<h2
+class="
+text-xl
+font-medium
+tracking-tight
+text-white
+"
+>
+
+{p.titolo}
+
+</h2>
+
+
+
+{p.stato === "completed" && (
+
+<span
+class="
+text-xs
+px-3
+py-1
+rounded-full
+bg-cyan-400/10
+text-cyan-300
+border
+border-cyan-300/20
+"
+>
+
+Completato
+
+</span>
+
+)}
+
+
+
+{p.stato === "development" && (
+
+<span
+class="
+text-xs
+px-3
+py-1
+rounded-full
+bg-purple-400/10
+text-purple-300
+border
+border-purple-300/20
+"
+>
+
+In sviluppo
+
+</span>
+
+)}
+
+
+
+{p.stato === "concept" && (
+
+<span
+class="
+text-xs
+px-3
+py-1
+rounded-full
+bg-white/5
+text-white/40
+border
+border-white/10
+"
+>
+
+Concept
+
+</span>
+
+)}
+
+
+
+</div>
+
+
+
+
+<p
+class="
+text-sm
+leading-relaxed
+text-white/50
+"
+>
+
+{p.descrizione}
+
+</p>
+
+
+
+
+<!-- Tecnologie -->
+
+{p.tecnologie.length > 0 && (
+
+<div
+class="
+flex
+flex-wrap
+gap-2
+mt-7
+"
+>
+
+{p.tecnologie.map((t) => (
+
+<span
+class="
+text-xs
+px-3
+py-1
+rounded-full
+bg-white/5
+border
+border-white/10
+text-white/60
+"
+>
+
+{t}
+
+</span>
+
+))}
+
+
+</div>
+
+)}
+
+
+
+
+<!-- CTA hover -->
+{p.stato === "completed" && (
+
+<div
+class="
+mt-8
+flex
+items-center
+gap-2
+text-sm
+font-medium
+text-cyan-300
+opacity-0
+translate-y-3
+group-hover:opacity-100
+group-hover:translate-y-0
+transition-all
+duration-300
+"
+>
+
+Apri progetto
+
+<iconify-icon
+icon="lucide:arrow-right"
+width="16"
+></iconify-icon>
+
+</div>
+
+)}
+
+
+
+</div>
+
+
+
+</article>
+
+
+))}
+
+
+</div>
+
+
+
+
+
+<!-- CTA -->
+
+
+<div
+class="rv mt-20 text-center"
+>
+
+
+<p class="text-sm text-white/35 mb-6">
+Vuoi collaborare a un nuovo progetto?
+</p>
+
+
+<a
+href="/contatti"
+class="btn-primary"
+>
+
+<iconify-icon
+icon="lucide:send"
+width="16"
+class="mr-2">
+</iconify-icon>
+
+Scrivimi
+
+</a>
+
+
+</div>
+
+
 
 </section>
+
+<ProjectModal />
+
+<script>
+
+const modal = document.querySelector("#project-modal")
+const modalBox = document.querySelector("#modal-box")
+const closeButton = document.querySelector("#modal-close")
+const overlay = document.querySelector("#modal-overlay")
+
+const title = document.querySelector("#modal-title")
+const description = document.querySelector("#modal-description")
+const tags = document.querySelector("#modal-tags")
+const image = document.querySelector("#modal-image")
+const links = document.querySelector("#modal-links")
+
+const objective =
+document.querySelector("#modal-objective")
+
+const approach =
+document.querySelector("#modal-approach")
+
+const skills =
+document.querySelector("#modal-skills")
+
+const role =
+document.querySelector("#modal-role")
+
+const cards = document.querySelectorAll("[data-project]")
+
+
+cards.forEach((card) => {
+
+  card.addEventListener("click", () => {
+
+    const data = card.dataset.project
+
+    if (!data) return
+
+
+    const project = JSON.parse(data)
+
+
+    if (!modal) return
+
+
+    title.textContent = project.titolo
+
+    description.textContent = project.descrizione
+
+    objective.textContent =
+project.obiettivo
+
+
+approach.textContent =
+project.approccio
+
+
+skills.innerHTML = ""
+role.innerHTML = ""
+
+
+project.ruolo?.forEach((item)=>{
+
+role.innerHTML += `
+
+<span
+class="
+text-xs
+px-3
+py-1
+rounded-full
+bg-purple-400/10
+border
+border-purple-300/20
+text-purple-200
+"
+>
+${item}
+</span>
+
+`
+
+})
+
+project.competenze.forEach((skill)=>{
+
+  skills.innerHTML += `
+
+  <span
+  class="
+  text-xs
+  px-3
+  py-1
+  rounded-full
+  bg-cyan-400/10
+  border
+  border-cyan-300/20
+  text-cyan-200
+  "
+  >
+  ${skill}
+  </span>
+
+  `
+
+})
+
+
+    // Tecnologie
+
+    tags.innerHTML = ""
+
+    project.tecnologie.forEach((tech) => {
+
+      tags.innerHTML += `
+
+      <span
+        class="
+        text-xs
+        px-3
+        py-1
+        rounded-full
+        bg-white/5
+        border
+        border-white/10
+        text-white/60
+        "
+      >
+        ${tech}
+      </span>
+
+      `
+
+    })
+
+
+    // Immagine
+
+    image.innerHTML = project.immagine
+      ? `
+
+      <img
+        src="${project.immagine}"
+        alt="${project.titolo}"
+        class="
+        rounded-2xl
+        w-full
+        "
+      />
+
+      `
+      : ""
+
+
+
+    // Link
+
+    links.innerHTML = ""
+
+
+    if (project.github) {
+
+  links.innerHTML += `
+
+    <a
+      href="${project.github}"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-primary"
+    >
+      Vedi codice
+    </a>
+
+  `
+
+}
+
+
+
+    // Apertura modal
+
+    modal.classList.remove("hidden")
+    modal.classList.add("flex")
+
+
+    requestAnimationFrame(() => {
+
+      modalBox.classList.remove(
+        "opacity-0",
+        "translate-y-8"
+      )
+
+    })
+
+
+  })
+
+
+})
+
+
+
+// Chiusura
+
+function closeModal() {
+
+  if (
+  !modal ||
+  !modalBox ||
+  !objective ||
+  !approach ||
+  !skills
+) return
+
+
+  setTimeout(() => {
+
+    modal.classList.add("hidden")
+    modal.classList.remove("flex")
+
+  }, 300)
+
+}
+
+
+
+closeButton?.addEventListener(
+  "click",
+  closeModal
+)
+
+
+overlay?.addEventListener(
+  "click",
+  closeModal
+)
+
+
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+
+    if (event.key === "Escape") {
+
+      closeModal()
+
+    }
+
+  }
+)
+
+
+</script>
 
 </Layout>

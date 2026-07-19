@@ -39,26 +39,44 @@ import Footer from '../components/Footer.astro'
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap">
 
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
     <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        background: #0a0618;
-        color: #fff;
-        font-family: 'Inter', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      ::-webkit-scrollbar { width: 5px; }
-      ::-webkit-scrollbar-track { background: #0a0618; }
-      ::-webkit-scrollbar-thumb { background: rgba(123, 47, 247, 0.4); border-radius: 3px; }
-      ::-webkit-scrollbar-thumb:hover { background: rgba(123, 47, 247, 0.6); }
-      ::selection { background: rgba(0, 212, 255, 0.3); color: #fff; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background: #F8FAFC;
+      color: #082F49;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #F8FAFC;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(15, 139, 184, 0.35);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(15, 139, 184, 0.55);
+    }
+
+    ::selection {
+      background: rgba(15, 139, 184, 0.2);
+      color:rgb(204, 221, 233);
+    }
+
     /* Focus visible — navigazione da tastiera */
       :focus-visible {
         outline: 2px solid rgba(0, 212, 255, 0.6);
@@ -78,14 +96,14 @@ import Footer from '../components/Footer.astro'
         z-index: 9999;
         padding: 10px 24px;
         border-radius: 0 0 12px 12px;
-        background: rgba(0, 212, 255, 0.15);
+        background: rgba(15, 139, 184, 0.1);
         backdrop-filter: blur(12px);
-        color: #00d4ff;
+        color: #0F8BB8;
         font-size: 13px;
         font-weight: 600;
         letter-spacing: 0.04em;
         text-decoration: none;
-        border: 1px solid rgba(0, 212, 255, 0.25);
+        border: 1px solid rgba(15, 139, 184, 0.25);
         transition: top 0.25s ease;
       }
       .skip-link:focus {
