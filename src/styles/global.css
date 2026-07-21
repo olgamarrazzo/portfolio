@@ -1,14 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #F6F4EF;
-  --color-brand: #DFA7B7;
-  --color-brand-dark: #B87D92;
-  --color-brand-light: #F8E8ED;
-  --color-border: #E6E0D8;
-  --color-ink: #1C1C1C;
-  --color-ink-muted: #66615A;
-
   --font-family-sans:  'Inter', sans-serif;
   --font-family-serif: 'Playfair Display', serif;
 }
@@ -20,21 +12,4 @@
 
 main {
   animation: fadeIn 0.4s ease both;
-}
-
-.hero-bg-image {
-  animation: breathe 20s ease-in-out infinite;
-}
-
-
-@keyframes breathe {
-
-  0%,100% {
-    transform: scale(1.05);
-  }
-
-  50% {
-    transform: scale(1.08);
-  }
-
 }

@@ -1,41 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Background from '../components/Background.astro'
 ---
 
 <Layout title="Contatti — Olga Marrazzo" description="Contatta Olga Marrazzo per collaborazioni, progetti o domande. Risponde entro 24 ore.">
-<Background />
-<div class="noise-page"></div>
-
-<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-  <div class="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-purple-500/[0.04] blur-3xl"></div>
-  <div class="absolute bottom-0 -right-40 w-[400px] h-[400px] rounded-full bg-cyan-500/[0.04] blur-3xl"></div>
-</div>
 
 <section class="relative z-10 pt-32 pb-24 md:pt-40 md:pb-32 max-w-5xl mx-auto px-6">
 
   <div class="rv mb-14">
-    <span class="section-label">Get in touch</span>
+    <span class="section-label">Contatti</span>
     <h1 class="section-title">Parliamo insieme</h1>
-    <p class="mt-5 text-base text-white/45 max-w-xl leading-relaxed">
+    <p class="mt-5 text-sm text-white max-w-xl leading-relaxed">
       Hai un progetto, una domanda o vuoi semplicemente connetterti? Rispondo di solito entro 24 ore.
     </p>
   </div>
 
   <div class="grid md:grid-cols-5 gap-8">
-
+    <!-- Form -->
     <div class="md:col-span-3 rv" style="transition-delay: 0.08s;">
-      <form id="contact-form" class="flex flex-col gap-4.5" novalidate>
+      <form id="contact-form" class="flex flex-col gap-4" novalidate>
         <div>
-          <label for="nome" class="block text-[11px] font-medium tracking-[0.14em] uppercase text-white/35 mb-2">Nome</label>
+          <label for="nome" class="form-label">Nome</label>
           <input id="nome" name="nome" type="text" placeholder="Il tuo nome" required class="fi" autocomplete="name" />
         </div>
         <div>
-          <label for="email" class="block text-[11px] font-medium tracking-[0.14em] uppercase text-white/35 mb-2">Email</label>
+          <label for="email" class="form-label">Email</label>
           <input id="email" name="email" type="email" placeholder="la-tua@email.com" required class="fi" autocomplete="email" />
         </div>
         <div>
-          <label for="messaggio" class="block text-[11px] font-medium tracking-[0.14em] uppercase text-white/35 mb-2">Messaggio</label>
+          <label for="messaggio" class="form-label">Messaggio</label>
           <textarea id="messaggio" name="messaggio" rows="5" placeholder="Raccontami del tuo progetto..." required class="fi" style="resize: none;"></textarea>
         </div>
         <button type="submit" class="btn-primary w-full md:w-auto" id="subBtn">Invia messaggio</button>
@@ -43,48 +35,49 @@ import Background from '../components/Background.astro'
       </form>
     </div>
 
+<!-- Info -->
     <div class="md:col-span-2 rv" style="transition-delay: 0.18s;">
-      <div class="gc p-7 h-full flex flex-col justify-between">
+      <div class="gc contact-info-card p-7 h-full flex flex-col justify-between">
         <div>
-          <h3 class="text-lg font-medium tracking-tight text-white mb-6">Info</h3>
+          <h3 class="text-base font-medium tracking-tight text-[#0a0618] mb-6">Info</h3>
           <div class="space-y-5">
             <div class="flex items-start gap-3">
-              <iconify-icon icon="lucide:mail" width="17" class="text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
+              <iconify-icon icon="lucide:mail" width="16" class="text-cyan-600 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
               <div>
-                <p class="text-[11px] text-white/35 mb-0.5">Email</p>
-                <a href="mailto:olgamarrazzoit@gmail.com" class="text-sm text-white/75 hover:text-cyan-400 transition-colors duration-300">olgamarrazzoit@gmail.com</a>
+                <p class="text-[11px] text-[#0a0618]/45 mb-0.5">Email</p>
+                <a href="mailto:olgamarrazzoit@gmail.com" class="text-sm text-[#0a0618]/75 hover:text-cyan-600 transition-colors duration-300">olgamarrazzoit@gmail.com</a>
               </div>
             </div>
             <div class="flex items-start gap-3">
-              <iconify-icon icon="lucide:map-pin" width="17" class="text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
+              <iconify-icon icon="lucide:map-pin" width="16" class="text-cyan-600 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
               <div>
-                <p class="text-[11px] text-white/35 mb-0.5">Posizione</p>
-                <p class="text-sm text-white/75">Italia</p>
+                <p class="text-[11px] text-[#0a0618]/45 mb-0.5">Posizione</p>
+                <p class="text-sm text-[#0a0618]/75">Italia</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
-              <iconify-icon icon="lucide:briefcase" width="17" class="text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
+              <iconify-icon icon="lucide:briefcase" width="16" class="text-cyan-600 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
               <div>
-                <p class="text-[11px] text-white/35 mb-0.5">Disponibilit&agrave;</p>
-                <p class="text-sm text-white/75">Disponibile per collaborazioni e progetti</p>
+                <p class="text-[11px] text-[#0a0618]/45 mb-0.5">Disponibilit&agrave;</p>
+                <p class="text-sm text-[#0a0618]/75">Disponibile per collaborazioni e progetti</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
-              <iconify-icon icon="lucide:clock" width="17" class="text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
+              <iconify-icon icon="lucide:clock" width="16" class="text-cyan-600 mt-0.5 shrink-0" aria-hidden="true"></iconify-icon>
               <div>
-                <p class="text-[11px] text-white/35 mb-0.5">Risposta</p>
-                <p class="text-sm text-white/75">Entro 24 ore</p>
+                <p class="text-[11px] text-[#0a0618]/45 mb-0.5">Risposta</p>
+                <p class="text-sm text-[#0a0618]/75">Entro 24 ore</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="mt-8 pt-5 border-t border-white/5">
-          <p class="text-[11px] text-white/25 mb-3.5">Social</p>
+        <div class="mt-8 pt-5 border-t border-[#0a0618]/10">
+          <p class="text-[11px] text-[#0a0618]/35 mb-3.5">Social</p>
           <div class="flex gap-4">
-            <a href="https://www.linkedin.com/in/olga-marrazzo-5808402a5" target="_blank" rel="noopener noreferrer" aria-label="Profilo LinkedIn" class="soc-icon text-white/35 text-[19px] hover:text-cyan-400">
+            <a href="https://www.linkedin.com/in/olga-marrazzo-5808402a5" target="_blank" rel="noopener noreferrer" aria-label="Profilo LinkedIn" class="soc-icon text-[#0a0618]/40 text-[19px] hover:text-cyan-600">
               <iconify-icon icon="mdi:linkedin" aria-hidden="true"></iconify-icon>
             </a>
-            <a href="https://github.com/olgamarrazzo" target="_blank" rel="noopener noreferrer" aria-label="Profilo GitHub" class="soc-icon text-white/35 text-[19px] hover:text-cyan-400">
+            <a href="https://github.com/olgamarrazzo" target="_blank" rel="noopener noreferrer" aria-label="Profilo GitHub" class="soc-icon text-[#0a0618]/40 text-[19px] hover:text-cyan-600">
               <iconify-icon icon="mdi:github" aria-hidden="true"></iconify-icon>
             </a>
           </div>
@@ -92,14 +85,67 @@ import Background from '../components/Background.astro'
       </div>
     </div>
 
-  </div>
-
 </section>
 
 </Layout>
+<style>
+  .form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(5, 5, 42);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+  /* Override mirato solo per il riquadro Info di questa pagina */
+  .contact-info-card {
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  .contact-info-card:hover {
+    background: rgba(255, 255, 255, 0.78);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  <style>
+  .form-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(5, 5, 42);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Override mirato solo per il riquadro Info di questa pagina */
+  .contact-info-card {
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  .contact-info-card:hover {
+    background: rgba(255, 255, 255, 0.78);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Titolo pagina: stesso font e peso dell'hero name in index.astro */
+  section.relative.z-10 > .rv > .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+</style>
 
 <script>
-  // ── Form handling ──
   const form = document.getElementById('contact-form');
   const status = document.getElementById('status');
   const subBtn = document.getElementById('subBtn');
@@ -137,4 +183,6 @@ import Background from '../components/Background.astro'
       status.classList.remove('hidden');
     });
   }
+
+  
 </script>

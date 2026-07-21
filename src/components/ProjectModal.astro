@@ -1,186 +1,369 @@
+---
+---
+
 <div
   id="project-modal"
-  class="
-    fixed
-    inset-0
-    z-50
-    hidden
-    items-center
-    justify-center
-    px-6
-  "
+  class="fixed inset-0 z-50 hidden items-center justify-center p-4 md:p-6"
 >
 
-  <!-- Overlay -->
-
+  <!-- Overlay (Background scuro sfocato) -->
   <div
     id="modal-overlay"
-    class="
-      absolute
-      inset-0
-      bg-black/70
-      backdrop-blur-md
-    "
+    class="absolute inset-0 bg-[#020a14]/80 backdrop-blur-sm"
   ></div>
 
-
-
-  <!-- Box -->
-<div
-  id="modal-box"
-  class="
-    relative
-    z-10
-    w-full
-    max-w-3xl
-    max-h-[85vh]
-    overflow-y-auto
-    rounded-[32px]
-    border
-    border-white/10
-    bg-[#071426]/95
-    backdrop-blur-xl
-    shadow-[0_0_80px_rgba(34,211,238,0.12)]
-    p-8
-    md:p-10
-    opacity-0
-    translate-y-8
-    transition-all
-    duration-500
-  "
->
-
-
+  <!-- Box Principale -->
+  <div
+    id="modal-box"
+    class="
+      relative z-10 w-full max-w-[880px] max-h-[90vh] overflow-y-auto
+      rounded-[28px] border border-white/15
+      bg-gradient-to-b from-[#16304a] to-[#0f2438]
+      shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)]
+      p-6 md:p-8 lg:p-10
+      opacity-0 translate-y-8
+      transition-all duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)]
+    "
+  >
+    
+    <!-- Pulsante Chiusura -->
     <button
       id="modal-close"
       class="
-        absolute
-        top-5
-        right-5
-        text-white/50
-        hover:text-white
-        transition
+        absolute top-[18px] right-[18px] z-20
+        w-9 h-9 flex items-center justify-center
+        rounded-full border border-white/15
+        bg-white/5 text-white/80
+        hover:bg-white/10 hover:shadow-[0_0_20px_rgba(0,212,255,0.3)]
+        transition-all duration-300
       "
-      aria-label="Chiudi"
+      aria-label="Chiudi popup"
     >
-
-      <iconify-icon
-        icon="lucide:x"
-        width="22"
-      ></iconify-icon>
-
+      <iconify-icon icon="lucide:x" width="18"></iconify-icon>
     </button>
 
+    <!-- Top Links (Popolato dallo script via #modal-links) -->
+    <div id="modal-links" class="flex justify-end gap-3 mb-4"></div>
 
+    <!-- Immagine Principale -->
+    <div id="modal-image" class="hero-media"></div>
 
-    <div id="modal-content">
+    <!-- Titolo & Descrizione -->
+    <h1 id="modal-title" class="modal-title">Titolo Progetto</h1>
+    <p id="modal-description" class="modal-subtitle">Descrizione progetto...</p>
 
-  <div id="modal-image" class="mb-8"></div>
+    <!-- Griglia Contenuti -->
+    <div class="grid-2">
+      
+      <!-- Colonna Sinistra -->
+      <div>
+        <h2 class="section-label">Informazioni</h2>
+        
+        <!-- Obiettivo (Popolato dallo script) -->
+        <div class="callout mb-6">
+          <h3>Obiettivo</h3>
+          <p id="modal-objective">Dettagli sull'obiettivo...</p>
+        </div>
 
+        <!-- Approccio (Popolato dallo script) -->
+        <div class="callout mb-4">
+          <h3>Approccio</h3>
+          <p id="modal-approach">Dettagli sull'approccio...</p>
+        </div>
+      </div>
 
-  <h2
-    id="modal-title"
-    class="
-      text-3xl
-      font-medium
-      text-white
-      mb-5
-    "
-  ></h2>
+      <!-- Colonna Destra -->
+      <div>
+        <h2 class="section-label">Stack tecnologico</h2>
+        <!-- Tecnologie (Popolato dallo script) -->
+        <div id="modal-tags" class="chip-row mb-8"></div>
 
+        <h2 class="section-label">Competenze applicate</h2>
+        <!-- Skills (Popolato dallo script) -->
+        <div id="modal-skills" class="chip-row"></div>
+      </div>
 
-  <p
-    id="modal-description"
-    class="
-      text-white/60
-      leading-relaxed
-      mb-8
-    "
-  ></p>
+    </div>
 
-  <div>
+        <!-- Galleria -->
+    <h2 class="section-label">Galleria</h2>
+    <div id="modal-gallery" class="modal-gallery"></div>
 
-<h3 class="text-sm uppercase tracking-wider text-white/40 mb-3">
-Ruolo
-</h3>
-
-<div
-id="modal-role"
-class="flex flex-wrap gap-2"
-></div>
-
-</div>
-
-  <div class="space-y-6 mt-8">
-
-
-<div>
-
-<h3 class="text-sm uppercase tracking-wider text-white/40 mb-2">
-Obiettivo
-</h3>
-
-<p
-id="modal-objective"
-class="text-white/60 leading-relaxed"
-></p>
-
-</div>
-
-
-
-<div>
-
-<h3 class="text-sm uppercase tracking-wider text-white/40 mb-2">
-Approccio
-</h3>
-
-<p
-id="modal-approach"
-class="text-white/60 leading-relaxed"
-></p>
-
-</div>
-
-
-
-<div>
-
-<h3 class="text-sm uppercase tracking-wider text-white/40 mb-3">
-Competenze applicate
-</h3>
-
-<div
-id="modal-skills"
-class="flex flex-wrap gap-2"
-></div>
-
-</div>
-
-
-</div>
-
-
-  <div
-    id="modal-tags"
-    class="
-      flex
-      flex-wrap
-      gap-2
-      mb-8
-    "
-  ></div>
-
-
-  <div
-    id="modal-links"
-    class="flex gap-4"
-  ></div>
-
-</div>
-
+    <!-- Footer / Meta -->
+    <div class="modal-footer">
+      <div class="meta-row">
+        <div class="meta-item">
+          <div class="label">Ruolo</div>
+          <div class="value" id="modal-footer-role">—</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Anno</div>
+          <div class="value" id="modal-footer-year">—</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Stato</div>
+          <div class="value" id="modal-footer-status">—</div>
+        </div>
+      </div>
+      
+      <!-- Spazio per il bottone CTA che popolerà lo script -->
+      <div id="modal-footer-cta" class="modal-footer-cta"></div>
+    </div>
 
   </div>
-
-
 </div>
+
+<style>
+  /* ═══ TIPOGRAFIA E STRUTTURA ═══ */
+  .modal-title {
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.1;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+    color: #f4f7fb;
+  }
+
+  .modal-subtitle {
+    color: rgba(230, 238, 247, 0.72);
+    font-size: 17px;
+    margin: 0 0 32px;
+    line-height: 1.5;
+  }
+
+  .section-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(230, 238, 247, 0.5);
+    margin: 0 0 12px;
+    font-weight: 600;
+  }
+
+  /* ═══ MEDIA & IMMAGINI ═══ */
+  .hero-media {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 16/8;
+    margin-bottom: 28px;
+    background: #0d2033;
+    box-shadow: 0 10px 30px -5px rgba(0,0,0,0.4);
+  }
+
+  /* Forza l'immagine iniettata dal JS a rispettare il container */
+  .hero-media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ═══ GRIGLIA ═══ */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 36px;
+  }
+
+  @media (max-width: 680px) {
+    .grid-2 {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+
+  /* ═══ ELEMENTI INTERNI (Callout, Chip, Footer) ═══ */
+  .callout {
+    background: rgba(27, 52, 80, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px 22px;
+  }
+
+  .callout h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #f4f7fb;
+  }
+
+  .callout p {
+    margin: 0;
+    color: rgba(230, 238, 247, 0.72);
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Stile per i tag iniettati dallo script di progetti.astro */
+  .chip-row :global(span):not(#modal-skills span) {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  color: rgba(230, 238, 247, 0.72);
+  transition: all 0.2s ease;
+}
+
+.chip-row :global(span):not(#modal-skills span):hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.3);
+  color: #67e8f9;
+}
+
+  /* ═══ FOOTER METADATA ORIZZONTALE CON CTA A DESTRA ═══ */
+  .modal-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between; /* Mette info a sinistra e bottone a destra */
+    gap: 20px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item .label {
+    font-size: 11px;
+    color: rgba(230, 238, 247, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  .meta-item .value {
+    font-size: 14px;
+    color: #f4f7fb;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .meta-item .value.online { color: #34d399; }
+  .meta-item .value.dev { color: #c084fc; }
+  .meta-item .value.concept { color: rgba(230, 238, 247, 0.5); }
+
+  /* Bottone Ciano Footer */
+  .btn-cyan-footer {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #00d4ff;
+    color: #04241a;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: filter 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-cyan-footer:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  }
+
+  /* Colori Stato */
+  .meta-item .value.online { color: #67e8f9; } /* Verde per Completato */
+  .meta-item .value.dev { color: #c084fc; }    /* Viola per In sviluppo */
+  .meta-item .value.concept { color: rgba(230, 238, 247, 0.5); } /* Grigio per Concept */
+
+  /* ═══ SCROLLBAR PERSONALIZZATA ═══ */
+  #modal-box::-webkit-scrollbar {
+    width: 6px;
+  }
+  #modal-box::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #modal-box::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  #modal-box::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* ═══ COMPETENZE: CHECK-LIST SU UNA COLONNA ═══ */
+  #modal-skills {
+    display: flex;
+    flex-direction: column; /* Tutto su una colonna */
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+    /* ═══ COMPETENZE: FORZA ASSOLUTA SULLA LISTA ═══ */
+  :global(.modal-list) {
+    list-style: none !important;
+    margin: -40px 0 28px 0 !important; 
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+
+  :global(.modal-li) {
+    display: flex !important; /* Forza l'allineamento orizzontale */
+    align-items: center !important; /* Centra perfettamente la spunta col testo */
+    gap: 12px !important;
+    font-size: 14px !important;
+    color: rgba(230, 238, 247, 0.7) !important;
+    line-height: 1.4 !important;
+  }
+
+  :global(.cyan-dot) {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important; /* Impedisce al cerchio di restringersi */
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    background: rgba(0, 212, 255, 0.1) !important;
+    border: 1.5px solid rgba(0, 212, 255, 0.5) !important;
+    color: #00d4ff !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+  }
+
+  /* ═══ GALLERIA (3 immagini affiancate) ═══ */
+  .modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .modal-gallery img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .modal-gallery img:hover {
+    transform: scale(1.03);
+    border-color: rgba(0, 212, 255, 0.3);
+  }
+
+  /* Su mobile, se preferisci evitare immagini troppo strette, passa a 1 colonna */
+  @media (max-width: 480px) {
+    .modal-gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+
+</style>

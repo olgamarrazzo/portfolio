@@ -3,60 +3,53 @@ import Layout from '../layouts/Layout.astro'
 
 const skills = [
   {
-    titolo: "HTML & Tailwind CSS",
-    desc: "Markup semantico, layout utility-first con Grid e Flexbox, classi responsive.",
+    titolo: "HTML & CSS",
+    desc: "Markup semantico, Tailwind CSS, layout responsive con Grid e Flexbox.",
     icona: "lucide:code-2",
-    livello: 88,
+    livello: 3,
     color: "cyan",
   },
   {
     titolo: "Astro",
-    desc: "Routing basato su file, composizione componenti con slot, dati dinamici nel frontmatter.",
+    desc: "Routing basato su file, composizione componenti, Island Architecture.",
     icona: "lucide:rocket",
-    livello: 80,
+    livello: 3,
     color: "purple",
   },
   {
     titolo: "JavaScript",
-    desc: "Sintassi ES6+, Fetch API, IntersectionObserver, manipolazione DOM e gestione eventi.",
+    desc: "ES6+, manipolazione DOM, Fetch API, IntersectionObserver.",
     icona: "lucide:braces",
-    livello: 82,
+    livello: 2,
     color: "cyan",
   },
   {
-    titolo: "Animazioni CSS",
-    desc: "Keyframe personalizzati, reveal allo scroll, effetto parallax, glassmorphism.",
-    icona: "lucide:sparkles",
-    livello: 85,
+    titolo: "TypeScript",
+    desc: "Tipizzazione statica, interfacce, generici per codice più robusto.",
+    icona: "lucide:file-code",
+    livello: 2,
     color: "purple",
   },
   {
-    titolo: "UI Design & Figma",
-    desc: "Prototipazione ad alta fedeltà, creazione design system, gerarchia visiva e specifiche componente.",
-    icona: "lucide:layout",
-    livello: 78,
+    titolo: "Animazioni CSS",
+    desc: "Keyframe, transizioni, reveal allo scroll, micro-interazioni.",
+    icona: "lucide:sparkles",
+    livello: 3,
     color: "cyan",
   },
   {
-    titolo: "Integrazione API",
-    desc: "Comunicazione client-server con Fetch, gestione form data, servizio email Resend.",
-    icona: "lucide:plug",
-    livello: 75,
+    titolo: "UI Design & Figma",
+    desc: "Prototipazione, design system, gerarchia visiva e specifiche componente.",
+    icona: "lucide:layout",
+    livello: 2,
     color: "purple",
   },
   {
     titolo: "Responsive Design",
-    desc: "Approccio mobile-first, media queries CSS, breakpoint Tailwind, layout adattivi.",
+    desc: "Approccio mobile-first, media queries, layout adattivi per ogni dispositivo.",
     icona: "lucide:smartphone",
-    livello: 85,
+    livello: 3,
     color: "cyan",
-  },
-  {
-    titolo: "UI / UX Design",
-    desc: "Design system coerente tra pagine, estetica dark cinematografica, interazioni fluide.",
-    icona: "lucide:pen-tool",
-    livello: 78,
-    color: "purple",
   },
 ]
 
@@ -64,19 +57,19 @@ const timeline = [
   {
     anno: "2019",
     titolo: "Diploma Liceo scientifico",
-    desc: "Un percorso fondato su matematica, metodo analitico e ragionamento strutturato. Qui nasce il mio interesse per la tecnologia.",
+    desc: "Percorso fondato su metodo analitico e ragionamento strutturato.",
     attuale: false,
   },
   {
     anno: "2023",
     titolo: "Laurea in Ingegneria Informatica",
-    desc: "Tre anni dedicati a programmazione, algoritmi, sviluppo software e architetture informatiche.",
+    desc: "Programmazione, algoritmi, sviluppo software e architetture.",
     attuale: false,
   },
   {
     anno: "2024 — oggi",
     titolo: "Frontend Development & UI Design",
-    desc: "Sviluppo interfacce web moderne con Astro, TypeScript e Tailwind CSS, combinando precisione tecnica e design.",
+    desc: "Interfacce web moderne con Astro, TypeScript e Tailwind CSS.",
     attuale: true,
   },
 ]
@@ -86,43 +79,32 @@ const strumenti = [
   "TypeScript",
   "Tailwind CSS",
   "Figma",
-  "Iconify",
-  "Resend",
+  "Canva",
   "Git",
   "GitHub",
   "Vercel",
-  "Cursor",
+  "Pacchetto Office",
 ]
 ---
 
 <Layout title="Olga Marrazzo — Frontend Developer" description="Portfolio di Olga Marrazzo, Frontend Developer. Creo esperienze digitali tra design e tecnologia con Astro, Tailwind CSS e TypeScript.">
 
-<!-- ═══════ HERO BACKGROUND — DAY / NIGHT CROSSFADE ═══════ -->
+<!-- ═══════ HERO BACKGROUND — DAY ═══════ -->
 <div class="hero-bg" aria-hidden="true">
-  <!-- Livello NOTTE (sotto) — visibile quando il giorno sfuma -->
-  <img
-    class="hero-img hero-night"
-    src="/dark-bg1.jpeg"
-    alt=""
-    fetchpriority="high"
-  />
-  <!-- Livello GIORNO (sopra) — sfuma allo scroll -->
-  <img
-    class="hero-img hero-day"
-    src="/hero-bg3.png"
-    alt=""
-    fetchpriority="high"
-  />
-  <!-- Stelle twinkle (sopra la notte, sotto il giorno) -->
-  <canvas id="starsCanvas" class="hero-stars"></canvas>
+  <img class="hero-img hero-day" src="/hero-bg.png" alt="" fetchpriority="high" />
+</div>
+
+<!-- ═══════ NIGHT ATMOSPHERE — shared dark-bg + stars ═══════ -->
+<div class="night-atmosphere" id="nightAtmosphere" aria-hidden="true">
+  <img class="night-atmosphere-img" src="/dark-bg.jpeg" alt="" />
+  <canvas id="starsCanvas" class="night-atmosphere-stars"></canvas>
+  <div class="night-atmosphere-overlay"></div>
 </div>
 
 <!-- ═══════ HERO CONTENT ═══════ -->
 <div class="hero-content" id="heroContent">
   <p class="hero-sub">
-    <span class="hero-gradient">
-      Front-end Developer
-    </span>
+    <span class="hero-gradient">Front-end Developer</span>
   </p>
 
   <h1 class="hero-name">
@@ -135,17 +117,11 @@ const strumenti = [
   </p>
 
   <div class="hero-buttons">
-    <a href="/progetti" class="btn-primary">
+    <a href="/progetti" class="btn-glass btn-glass--primary">
       Scopri i miei progetti
-      <iconify-icon
-        icon="lucide:arrow-down"
-        width="16"
-        class="ml-1.5"
-        aria-hidden="true">
-      </iconify-icon>
+      <iconify-icon icon="lucide:arrow-down" width="15" class="ml-1.5" aria-hidden="true"></iconify-icon>
     </a>
-
-    <a href="/contatti" class="btn-outline">
+    <a href="/contatti" class="btn-glass btn-glass--outline">
       Contattami
     </a>
   </div>
@@ -160,95 +136,52 @@ const strumenti = [
 <div class="content-wrapper">
 
   <!-- ─── SKILLS ─── -->
-  <section id="skills" class="skills-section py-20 md:py-28 px-6">
+  <section id="skills" class="skills-section">
 
-    <!-- Sfondo notturno (continuità con hero night) -->
-    <img
-      src="/dark-bg1.jpeg"
-      alt=""
-      class="skills-bg"
-      aria-hidden="true"
-    />
-
-    <!-- Overlay per leggibilità -->
-    <div class="skills-overlay"></div>
-
-    <!-- Contenuto -->
     <div class="relative z-10 max-w-5xl mx-auto">
-
       <div class="rv mb-12">
-        <span class="section-label">
-          Competenze
-        </span>
-        <h2 class="section-title">
-          Skills
-        </h2>
+        <span class="section-label">Competenze</span>
+        <h2 class="section-title">Cosa so fare</h2>
+        <p class="mt-5 text-sm text-white/50 max-w-lg leading-relaxed">
+          Un set di competenze in continuo crescita, maturato attraverso studio, progetti personali e passione per il frontend.
+        </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-5">
-
-        {skills.map((item, i) => (
-
-          <div
-            class={`gc skill-card skill-card--${item.color} p-7 rv`}
-            style={`transition-delay: ${0.08 + i * 0.08}s`}
-          >
-            <!-- Bordo fluo animato -->
-            <div class={`skill-glow skill-glow--${item.color}`}></div>
-
-            <div class="flex items-center gap-3.5 mb-5">
-              <div
-                class={`w-10 h-10 rounded-xl ${
-                  item.color === 'cyan'
-                    ? 'bg-cyan-500/10 skill-icon-box--cyan'
-                    : 'bg-purple-500/10 skill-icon-box--purple'
-                } flex items-center justify-center shrink-0`}
-              >
+      <div class="skills-grid">
+        {skills.map((s, i) => (
+          <div class="skill-card rv" style={`transition-delay: ${0.08 + i * 0.07}s;`}>
+            <div class="flex items-center gap-3.5 mb-4">
+              <div class="skill-icon-wrap">
                 <iconify-icon
-                  icon={item.icona}
+                  icon={s.icona}
                   width="20"
-                  class={
-                    item.color === 'cyan'
-                      ? 'text-cyan-400'
-                      : 'text-purple-400'
-                  }
-                  aria-hidden="true">
-                </iconify-icon>
+                  class={s.color === "cyan" ? "text-cyan-400" : "text-purple-400"}
+                  aria-hidden="true"
+                ></iconify-icon>
               </div>
-
-              <h3 class="text-[17px] font-medium tracking-tight text-white">
-                {item.titolo}
-              </h3>
+              <h3 class="skill-title">{s.titolo}</h3>
             </div>
-
-            <p class="text-[13px] text-white/55 leading-relaxed mb-5">
-              {item.desc}
-            </p>
-
-            <!-- Barra skill con effetto fluo -->
-            <div class={`sk-bar sk-bar--${item.color}`}>
-              <div
-                class={`sk-fill sk-fill--${item.color}`}
-                data-w={item.livello}
-              >
-                <!-- Shimmer scorrevole -->
-                <div class="sk-shimmer"></div>
-              </div>
-              <span class="sk-percent">{item.livello}%</span>
+            <p class="skill-desc">{s.desc}</p>
+            <div class="sk-dots">
+              {Array.from({ length: 4 }).map((_, di) => (
+                <span
+                  class:list={[
+                    "sk-dot",
+                    di < s.livello && (s.color === "cyan" ? "sk-dot--filled" : "sk-dot--purple")
+                  ]}
+                ></span>
+              ))}
             </div>
-
           </div>
-
         ))}
-
       </div>
     </div>
-
-  </section>
-
+  </section>   
+  
   <!-- ─── PERCORSO — TIMELINE ORIZZONTALE ─── -->
-  <section id="percorso" class="section-fade section-fade-2 py-20 md:py-28 px-6">
-    <div class="max-w-6xl mx-auto">
+  <section id="percorso" class="section-fade section-fade-2 py-20 md:py-28 px-6 relative overflow-hidden">
+
+    <div class="max-w-6xl mx-auto relative z-10">
       <div class="rv mb-14">
         <span class="section-label">Percorso</span>
         <h2 class="section-title">Il mio percorso</h2>
@@ -277,48 +210,37 @@ const strumenti = [
     </div>
   </section>
 
-  <!-- ─── STACK TECNOLOGICO ─── -->
-  <section id="stack" class="section-fade section-fade-3 py-20 md:py-28 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="rv mb-12">
-        <span class="section-label">Tecnologie</span>
-        <h2 class="section-title">Strumenti che utilizzo</h2>
+  <!-- ─── TECH STACK ─── -->
+  <section class="tech-section">
+    <div class="tech-inner">
+      <div class="rv mb-10 text-center">
+        <span class="section-label">Strumenti</span>
+        <h2 class="section-title">Tecnologie che utilizzo</h2>
       </div>
-      <div class="flex flex-wrap gap-3">
-        {strumenti.map((strumento, i) => (
-          <span
-            class="tech-tag rv"
-            style={`transition-delay: ${0.1 + i * 0.05}s`}
-          >
-            {strumento}
-          </span>
+      <div class="rv flex flex-wrap justify-center gap-3">
+        {strumenti.map((s, i) => (
+          <span class="tech-tag" style={`transition-delay: ${0.1 + i * 0.05}s;`}>{s}</span>
         ))}
       </div>
     </div>
   </section>
 
   <!-- ─── CTA ─── -->
-  <section id="cta" class="section-fade section-fade-4 py-20 md:py-28 px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="gc p-10 md:p-16 text-center rv relative overflow-hidden">
-        <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-purple-500/10 blur-3xl pointer-events-none"></div>
-        <div class="relative z-10">
-          <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-white neon-text">Hai un progetto?</h2>
-          <p class="mt-5 text-white/50 text-base max-w-xl mx-auto leading-relaxed">
-            Scopri i miei lavori oppure contattami per costruire qualcosa insieme.
-          </p>
-          <div class="flex flex-wrap justify-center gap-4 mt-10">
-            <a href="/progetti" class="btn-outline">
-              <iconify-icon icon="lucide:folder-open" width="16" class="mr-1.5" aria-hidden="true"></iconify-icon>
-              I miei progetti
-            </a>
-            <a href="/contatti" class="btn-primary">
-              <iconify-icon icon="lucide:send" width="16" class="mr-1.5" aria-hidden="true"></iconify-icon>
-              Scrivimi
-            </a>
-          </div>
-        </div>
+  <section class="cta-section">
+    <div class="cta-inner rv">
+      <div class="cta-glow cta-glow--cyan" aria-hidden="true"></div>
+      <div class="cta-glow cta-glow--purple" aria-hidden="true"></div>
+      <h2 class="cta-title">Hai un progetto in mente?</h2>
+      <p class="cta-sub">Parliamone insieme e troviamo la soluzione migliore.</p>
+      <div class="cta-buttons">
+        <a href="/progetti" class="btn-glass btn-glass--outline">
+          <iconify-icon icon="lucide:folder-open" width="15" class="mr-1.5" aria-hidden="true"></iconify-icon>
+          I miei progetti
+        </a>
+        <a href="/contatti" class="btn-glass btn-glass--primary">
+          <iconify-icon icon="lucide:send" width="15" class="mr-1.5" aria-hidden="true"></iconify-icon>
+          Scrivimi
+        </a>
       </div>
     </div>
   </section>
@@ -336,9 +258,9 @@ const strumenti = [
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 0;
+    z-index: 2;
+    pointer-events: none;
   }
-
   .hero-img {
     position: absolute;
     inset: 0;
@@ -347,21 +269,32 @@ const strumenti = [
     object-fit: cover;
     object-position: center 25%;
   }
-
-  /* Livello notte — sempre presente sotto */
-  .hero-night {
-    z-index: 1;
-    filter: brightness(0.6) saturate(1.3);
-  }
-
-  /* Livello giorno — sopra, sfuma allo scroll via JS */
   .hero-day {
-    z-index: 2;
-    transition: opacity 0.05s linear;
+    z-index: 1;
   }
 
-  /* Canvas stelle — tra notte e giorno */
-  .hero-stars {
+  /* ═══ NIGHT ATMOSPHERE ═══ */
+  .night-atmosphere {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .night-atmosphere-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    filter: brightness(0.5) saturate(1.4);
+    transform: scale(1); /* Zoom fisso richiesto */
+  }
+  .night-atmosphere-stars {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -369,7 +302,13 @@ const strumenti = [
     z-index: 1;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.6s ease;
+  }
+  .night-atmosphere-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(8,8,20,.2) 80%, rgba(8,8,20,.45) 100%);
+    pointer-events: none;
   }
 
   /* ═══ HERO TEXT ═══ */
@@ -388,7 +327,6 @@ const strumenti = [
 
   .hero-sub {
     color: rgba(26,26,26,.65);
-    font-family: "Inter", sans-serif;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: .35em;
@@ -397,6 +335,11 @@ const strumenti = [
     opacity: 0;
     transform: translateY(20px);
     animation: txtIn .9s ease .3s forwards;
+  }
+  .hero-gradient {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    filter: none;
   }
 
   .hero-name {
@@ -415,8 +358,7 @@ const strumenti = [
 
   .hero-tag {
     color: rgba(26,26,26,.85);
-    font-family: "Inter", sans-serif;
-    font-size: clamp(16px,2vw,22px);
+    font-size: clamp(16px, 2vw, 22px);
     font-weight: 300;
     line-height: 1.6;
     max-width: 520px;
@@ -432,13 +374,6 @@ const strumenti = [
     margin-top: 40px;
     opacity: 0;
     animation: txtIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
-  }
-
-  .hero-gradient {
-    color: rgba(26,26,26,.85);
-    background: none;
-    -webkit-text-fill-color: white;
-    filter: none;
   }
 
   @keyframes txtIn {
@@ -477,262 +412,96 @@ const strumenti = [
     50% { opacity: 1; transform: scaleY(1.15); }
   }
 
-  /* ═══ CONTENT WRAPPER ═══ */
+     /* ═══ CONTENT WRAPPER ═══ */
   .content-wrapper {
     position: relative;
-    z-index: 5;
+    z-index: 1;
   }
 
+  /* Overlay continuo: sale per coprire Skills/Timeline, poi scende a 0 per far vedere il dark-bg */
+  .content-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,             /* Trasparente all'inizio (subito dopo l'hero) */
+      rgba(8, 8, 20, 0.45) 30%,  /* Si fa scuro per le Skills */
+      rgba(8, 8, 20, 0.5) 45%,   /* Massima copertura per la Timeline */
+      rgba(8, 8, 20, 0.35) 65%,  /* Inizia a diradarsi sul Tech Stack */
+      transparent 100%           /* Completamente sparito in fondo alla pagina */
+    );
+  }
+
+
   /* ═══════════════════════════════════════════
-     SKILLS SECTION — NIGHT BACKGROUND
+     SKILLS SECTION
      ═══════════════════════════════════════════ */
   .skills-section {
     position: relative;
     overflow: hidden;
     min-height: 100vh;
-    margin-top: 0px;
-    padding-top: 100px;
-    /* Fallback: se il body non è ancora colorato via JS, la sezione ha comunque un bg notte */
-    background: #080814;
+    margin-top: -100vh;
+    padding: calc(6rem + 100vh) 1.5rem 6rem;
+    background: transparent;
   }
 
-  .skills-section::before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: 0;
-    width: 100%;
-    height: 320px;
-    z-index: 2;
-    background:
-      linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(8,8,20,.3) 25%,
-        rgba(8,8,20,.7) 60%,
-        rgba(8,8,20,.95) 100%
-      );
-    pointer-events: none;
-  }
 
-  .skills-bg {
-    position: absolute;
-    top: -200px;
-    left: 0;
-    width: 100%;
-    height: calc(100% + 200px);
-    object-fit: cover;
-    object-position: center 20%;
-    z-index: 0;
-    /* Stessa immagine della hero-night → continuità visiva perfetta */
-    /* Estesa 200px verso l'alto per coprire la fascia nera */
-    filter: brightness(0.5) saturate(1.4);
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
-
-  .skills-overlay {
-    position: absolute;
-    top: -200px;
-    left: 0;
-    width: 100%;
-    height: calc(100% + 200px);
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(8,8,20,.05),
-        rgba(8,8,20,.15) 25%,
-        rgba(8,8,20,.6)
-      );
-    z-index: 1;
-    pointer-events: none;
+  @media (min-width: 640px) {
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
-
-  /* ═══════════════════════════════════════════
-     SKILL CARD — FLUO GLOW BORDER
-     ═══════════════════════════════════════════ */
   .skill-card {
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.06);
     background: rgba(8,8,20,0.45);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    transition: transform 0.35s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 18px;
+    padding: 1.5rem;
+    transition: transform 0.4s var(--ease-out-expo), border-color 0.4s ease, box-shadow 0.4s ease;
   }
-
   .skill-card:hover {
     transform: translateY(-3px);
+    border-color: rgba(255,255,255,0.12);
+    box-shadow: 0 0 20px rgba(0,212,255,0.06), 0 12px 40px rgba(0,0,0,0.3);
   }
-
-  /* Bordo fluo animato (pseudo-elemento rotante) */
-  .skill-glow {
-    position: absolute;
-    inset: -2px;
-    border-radius: inherit;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    overflow: hidden;
-  }
-
-  .skill-glow::before {
-    content: "";
-    position: absolute;
-    inset: -50%;
-    background: conic-gradient(
-      from 0deg,
-      transparent 0%,
-      transparent 40%,
-      var(--glow-color) 50%,
-      transparent 60%,
-      transparent 100%
-    );
-    animation: glowSpin 4s linear infinite;
-  }
-
-  .skill-card:hover .skill-glow {
-    opacity: 1;
-  }
-
-  /* Varianti colore fluo */
-  .skill-glow--cyan {
-    --glow-color: rgba(0, 212, 255, 0.5);
-  }
-  .skill-glow--purple {
-    --glow-color: rgba(168, 85, 247, 0.5);
-  }
-
-  .skill-card--cyan:hover {
-    border-color: rgba(0, 212, 255, 0.2);
-    box-shadow:
-      0 0 20px rgba(0, 212, 255, 0.08),
-      inset 0 0 20px rgba(0, 212, 255, 0.03);
-  }
-  .skill-card--purple:hover {
-    border-color: rgba(168, 85, 247, 0.2);
-    box-shadow:
-      0 0 20px rgba(168, 85, 247, 0.08),
-      inset 0 0 20px rgba(168, 85, 247, 0.03);
-  }
-
-  @keyframes glowSpin {
-    to { transform: rotate(360deg); }
-  }
-
-  /* Icon box hover glow */
-  .skill-icon-box--cyan {
+  .skill-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
     transition: background 0.3s ease, box-shadow 0.3s ease;
   }
-  .skill-card--cyan:hover .skill-icon-box--cyan {
-    background: rgba(0, 212, 255, 0.18);
-    box-shadow: 0 0 16px rgba(0, 212, 255, 0.15);
+  .skill-card:hover .skill-icon-wrap {
+    background: rgba(0,212,255,0.12);
+    box-shadow: 0 0 16px rgba(0,212,255,0.1);
   }
-  .skill-icon-box--purple {
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+  .skill-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 0.4rem;
+    letter-spacing: -0.01em;
   }
-  .skill-card--purple:hover .skill-icon-box--purple {
-    background: rgba(168, 85, 247, 0.18);
-    box-shadow: 0 0 16px rgba(168, 85, 247, 0.15);
-  }
-
-  /* ═══════════════════════════════════════════
-     SKILL BAR — FLUO / NEON EFFECT
-     ═══════════════════════════════════════════ */
-  .sk-bar {
-    position: relative;
-    width: 100%;
-    height: 6px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    overflow: hidden;
-  }
-
-  .sk-bar--cyan {
-    box-shadow: 0 0 8px rgba(0, 212, 255, 0.05);
-  }
-  .sk-bar--purple {
-    box-shadow: 0 0 8px rgba(168, 85, 247, 0.05);
-  }
-
-  .sk-fill {
-    position: relative;
-    height: 100%;
-    border-radius: 999px;
-    width: 0%;
-    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-    overflow: hidden;
-  }
-
-  /* Colore fluo — cyan */
-  .sk-fill--cyan {
-    background: linear-gradient(90deg, #00d4ff, #00e5ff, #00bcd4);
-    box-shadow:
-      0 0 12px rgba(0, 212, 255, 0.5),
-      0 0 24px rgba(0, 212, 255, 0.2),
-      0 0 4px rgba(0, 212, 255, 0.8);
-  }
-
-  /* Colore fluo — purple */
-  .sk-fill--purple {
-    background: linear-gradient(90deg, #a855f7, #c084fc, #9333ea);
-    box-shadow:
-      0 0 12px rgba(168, 85, 247, 0.5),
-      0 0 24px rgba(168, 85, 247, 0.2),
-      0 0 4px rgba(168, 85, 247, 0.8);
-  }
-
-  /* Shimmer — luce che scorre nella barra */
-  .sk-shimmer {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.35) 50%,
-      transparent 100%
-    );
-    transform: translateX(-100%);
-    animation: shimmerSlide 2.5s ease-in-out infinite;
-    animation-delay: 1.5s;
-  }
-
-  @keyframes shimmerSlide {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(200%); }
-  }
-
-  /* Percentuale affiancata alla barra */
-  .sk-percent {
-    position: absolute;
-    right: 0;
-    top: -22px;
-    font-size: 11px;
-    font-weight: 600;
-    font-family: "Inter", sans-serif;
-    letter-spacing: 0.04em;
-    opacity: 0;
-    transition: opacity 0.6s ease 1.4s;
-  }
-  .sk-bar--cyan .sk-percent {
-    color: #00d4ff;
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
-  }
-  .sk-bar--purple .sk-percent {
-    color: #c084fc;
-    text-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
-  }
-
-  /* Mostra % quando la barra è animata */
-  .sk-fill[data-animated="true"] + .sk-percent,
-  .sk-fill[data-visible="true"] ~ .sk-percent {
-    opacity: 1;
-  }
-
-  /* ═══ SECTION FADES ═══ */
-  .section-fade-1,
-  .section-fade-2,
-  .section-fade-3,
-  .section-fade-4 {
-    background: transparent;
+  .skill-desc {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.4);
+    margin: 0;
   }
 
   /* ═══ HORIZONTAL TIMELINE ═══ */
@@ -812,30 +581,157 @@ const strumenti = [
     border: 1px solid rgba(0, 212, 255, 0.18);
   }
 
-  /* ═══════════════════════════════════════════
-     RESPONSIVE
-     ═══════════════════════════════════════════ */
-  @media (max-width: 1023px) {
+  /* ═══ FIX: Solo scroll orizzontale su Mobile ═══ */
+  @media (max-width: 768px) {
+    
+    /* Il contenitore esterno nasconde lo spazio vuoto ai lati */
+    .timeline-h {
+      overflow: hidden;
+    }
+
+    /* La traccia diventa un carosello scorrevole */
     .tl-track {
       display: flex;
+      gap: 1.5rem;
       overflow-x: auto;
-      gap: 20px;
-      padding-bottom: 16px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory; /* Effetto magnete allo scroll */
+      -webkit-overflow-scrolling: touch; /* Fluidità iOS */
+      padding-bottom: 1.5rem;
+      padding-left: 1.5rem; /* Margine sinistro per non attaccarsi al bordo */
+      padding-right: 1.5rem;
+
+      /* Nasconde la barra di scorrimento ma lascia scorrere col dito */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
-    .tl-track::-webkit-scrollbar { height: 3px; }
-    .tl-track::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.03); border-radius: 2px; }
-    .tl-track::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.25); border-radius: 2px; }
+    .tl-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Ogni card mantiene la sua larghezza e non si restringe */
     .tl-item {
-      min-width: 280px;
-      max-width: 300px;
-      flex-shrink: 0;
+      flex: 0 0 280px; /* Larghezza fissa su mobile */
       scroll-snap-align: start;
     }
-    .tl-line { display: none; }
+    
   }
 
+  /* --- CARD --- */
+  .timeline-card {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    width: 100%;
+    max-width: 380px;
+    transition: all 0.4s var(--ease-out-expo);
+    text-align: center; /* Allineamento centrato sotto il fiore */
+  }
+  .timeline-card:hover {
+    background: rgba(255,255,255,0.06);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 15px rgba(0, 212, 255, 0.05);
+    border-color: rgba(255,255,255,0.12);
+  }
+  .timeline-anno {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #67e8f9;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-titolo {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 0.4rem;
+    letter-spacing: -0.01em;
+  }
+  .timeline-desc {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.45);
+    margin: 0;
+  }
+  /* ═══════════════════════════════════════════
+     TECH STACK
+     ═══════════════════════════════════════════ */
+      .tech-section {
+    position: relative;
+    z-index: 2;
+    padding: 5rem 1.5rem;
+  }
+  
+  .tech-inner {
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  /* ═══════════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════════ */
+  .cta-section {
+    position: relative;
+    z-index: 2;
+    padding: 5rem 1.5rem 7rem;
+  }
+  .cta-inner {
+    position: relative;
+    max-width: 40rem;
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px;
+    padding: 3.5rem 2rem;
+    overflow: hidden;
+  }
+  .cta-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .cta-glow--cyan {
+    width: 300px; height: 300px;
+    top: -80px; right: -60px;
+    background: rgba(0,212,255,0.08);
+  }
+  .cta-glow--purple {
+    width: 250px; height: 250px;
+    bottom: -60px; left: -40px;
+    background: rgba(123,47,247,0.06);
+  }
+  .cta-title {
+    position: relative;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.75rem;
+  }
+  .cta-sub {
+    position: relative;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.45);
+    margin: 0 0 2rem;
+    line-height: 1.6;
+  }
+  .cta-buttons {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* ═══ RESPONSIVE ═══ */
   @media (max-width: 768px) {
     .hero-content {
       padding-left: 6%;
@@ -858,13 +754,20 @@ const strumenti = [
   //  DAY → NIGHT CROSSFADE ON SCROLL
   // ═══════════════════════════════════════════
 
+  const heroBg = document.querySelector('.hero-bg');
   const heroDay = document.querySelector('.hero-day');
-  const heroNight = document.querySelector('.hero-night');
+  
+  // RIFERIMENTI CORRETTI per l'atmosfera notte
+  const nightAtmosphere = document.getElementById('nightAtmosphere');
+  const nightImg = document.querySelector('.night-atmosphere-img');
+  
   const starsCanvas = document.getElementById('starsCanvas');
   const scrollInd = document.getElementById('scrollInd');
   const heroC = document.getElementById('heroContent');
+  const navBar = document.querySelector('.nav-bar');
+  const heroButtons = document.querySelector('.hero-buttons');
 
-  // ── Stelle twinkle su canvas ──
+  // ── Twinkling stars on canvas ──
   function initStars() {
     if (!starsCanvas) return;
     const ctx = starsCanvas.getContext('2d');
@@ -907,8 +810,13 @@ const strumenti = [
 
   initStars();
 
-  // ── Scroll handler: crossfade giorno→notte ──
+  // ── Scroll handler ──
   let ticking = false;
+
+  function smoothstep(edge0, edge1, x) {
+    const t = Math.max(0, Math.min(1, (x - edge0) / (edge1 - edge0)));
+    return t * t * (3 - 2 * t);
+  }
 
   function onScroll() {
     if (ticking) return;
@@ -917,58 +825,59 @@ const strumenti = [
     requestAnimationFrame(() => {
       const y = window.scrollY;
       const vh = window.innerHeight;
-
-      // Progress: 0 (top) → 1 (1 viewport scrolled)
       const progress = Math.min(y / vh, 1);
+      const TRANS_START = 0.06;
+      const TRANS_END = 0.42;
+      const trans = smoothstep(TRANS_START, TRANS_END, progress);
 
-      // GIORNO: sfuma via
+      // DAY: fade out
       if (heroDay) {
-        // Curva d'uscita più dolce: inizia a svanire al 10%, scompare al 90%
-        const dayOpacity = 1 - smoothstep(0.05, 0.75, progress);
-        heroDay.style.opacity = dayOpacity;
+        heroDay.style.opacity = String(1 - trans);
       }
 
-      // NOTTE: aumenta luminosità
-      if (heroNight) {
-        const nightBright = 0.4 + smoothstep(0.2, 0.8, progress) * 0.5;
-        heroNight.style.filter = `brightness(${nightBright}) saturate(1.3)`;
+      // NIGHT ATMOSPHERE: fade in (prima era skillsBg e non funzionava)
+      if (nightAtmosphere) {
+        nightAtmosphere.style.opacity = String(trans);
       }
 
-      // STELLE: appaiono col buio
+      // NIGHT IMG: brighten solo, lo zoom è fisso nel CSS
+      if (nightImg) {
+        const bright = 0.5 + trans * 0.45;
+        nightImg.style.filter = `brightness(${bright}) saturate(1.4)`;
+      }
+
+      // STARS: appear during the short transition
       if (starsCanvas) {
-        const starsOpacity = smoothstep(0.15, 0.6, progress);
-        starsCanvas.style.opacity = starsOpacity;
+        starsCanvas.style.opacity = String(smoothstep(0.12, TRANS_END, progress));
       }
 
-      // BODY BACKGROUND: transizione celeste → scuro via inline style
-      // (Gli scoped style di Astro NON raggiungono il tag <body> in Layout.astro)
-      const skyDay = '#9FD5F1';  // ← Celeste cielo — cambialo col colore esatto della tua immagine
-      const skyNight = '#080814';
-      const nightProg = smoothstep(0.2, 0.65, progress);
-      // Interpola il colore del body da celeste a scuro
-      const br = Math.round(159 * (1 - nightProg) + 8 * nightProg);
-      const bg = Math.round(213 * (1 - nightProg) + 8 * nightProg);
-      const bb = Math.round(241 * (1 - nightProg) + 20 * nightProg);
+      // Release fixed day layer once transition completes
+      if (heroBg) {
+        heroBg.style.visibility = trans >= 0.99 ? 'hidden' : 'visible';
+      }
+
+      // BODY BACKGROUND: sky → dark (synced to short transition)
+      const br = Math.round(159 * (1 - trans) + 8 * trans);
+      const bg = Math.round(213 * (1 - trans) + 8 * trans);
+      const bb = Math.round(241 * (1 - trans) + 20 * trans);
       document.body.style.background = `rgb(${br},${bg},${bb})`;
 
-      // Scroll indicator fade
+      // SCROLL INDICATOR FADE
       if (scrollInd) {
         scrollInd.style.opacity = Math.max(0, 1 - y / 180);
       }
 
-      // Hero parallax + fade
+      // HERO PARALLAX + FADE
       if (heroC) {
         heroC.style.transform = `translateY(${y * 0.28}px)`;
         heroC.style.opacity = Math.max(0, 1 - y / (vh * 0.7));
 
-        // Testo hero: cambia colore verso toni lunari col progredire
+        // Text color transition
         const heroName = heroC.querySelector('.hero-name');
         const heroTag = heroC.querySelector('.hero-tag');
         const heroSub = heroC.querySelector('.hero-sub');
 
         if (heroName) {
-          const dayFade = 1 - progress;
-          // Da nero (#1a1a1a) a bianco lunare
           const r = Math.round(26 + (255 - 26) * progress * 0.6);
           const g = Math.round(26 + (255 - 26) * progress * 0.6);
           const b = Math.round(26 + (255 - 26) * progress * 0.65);
@@ -979,52 +888,69 @@ const strumenti = [
         }
 
         if (heroTag) {
-          const alpha = 0.85 - progress * 0.3;
-          heroTag.style.color = `rgba(255,255,255,${alpha})`;
+          const r = Math.round(26 + (255 - 26) * progress * 0.6);
+          const g = Math.round(26 + (255 - 26) * progress * 0.6);
+          const b = Math.round(26 + (255 - 26) * progress * 0.65);
+          const alpha = 0.85 - progress * 0.15; // riduci leggermente l'opacità nella fase notte se vuoi
+          heroTag.style.color = `rgba(${r},${g},${b},${alpha})`;
         }
 
         if (heroSub) {
           const spanEl = heroSub.querySelector('.hero-gradient');
           if (spanEl) {
-            spanEl.style.color = `rgba(255,255,255,${0.6 + progress * 0.3})`;
+            const r = Math.round(26 + (255 - 26) * progress * 0.6);
+            const g = Math.round(26 + (255 - 26) * progress * 0.6);
+            const b = Math.round(26 + (255 - 26) * progress * 0.65);
+            const alpha = 0.65 + progress * 0.25;
+            spanEl.style.color = `rgba(${r},${g},${b},${alpha})`;
           }
         }
+      }
+      // NAV: Cambia colore testi SOLO nella Home (transizione giorno/notte)
+      // Nelle altre pagine userà i colori di default del CSS
+      if (heroC && navBar) {
+        // heroC esiste solo in index.astro, quindi questo blocco
+        // non verrà mai eseguito in progetti.astro o contatti.astro
+        
+        const navProgress = smoothstep(TRANS_START, 0.35, progress);
+        const navLinks = navBar.querySelectorAll('.nav-link');
+        
+        // Di giorno: testo scuro. Di notte: testo chiaro
+        const linkColor = progress > 0.3 
+          ? `rgba(255, 255, 255, ${0.6 + navProgress * 0.3})` 
+          : `rgba(26, 26, 26, 0.7)`;
+          
+        navLinks.forEach(el => {
+          el.style.color = linkColor;
+        });
+      }
+
+
+      // HERO BUTTONS: transition text color
+      if (heroButtons) {
+        const btnProgress = smoothstep(TRANS_START, 0.35, progress);
+        const btns = heroButtons.querySelectorAll('.btn-glass');
+        btns.forEach(btn => {
+          const isPrimary = btn.classList.contains('btn-glass--primary');
+          if (isPrimary) {
+            const txtVal = Math.round(26 + (255 - 26) * btnProgress);
+            btn.style.color = `rgb(${txtVal},${txtVal},${txtVal})`;
+            btn.style.borderColor = btnProgress > 0.4
+              ? `rgba(0,212,255,${0.15 + btnProgress * 0.2})`
+              : `rgba(255,255,255,${0.3 - btnProgress * 0.15})`;
+          } else {
+            const txtVal = Math.round(60 + (255 - 60) * btnProgress);
+            btn.style.color = `rgb(${txtVal},${txtVal},${txtVal})`;
+            btn.style.borderColor = `rgba(255,255,255,${0.2 - btnProgress * 0.08})`;
+          }
+        });
       }
 
       ticking = false;
     });
   }
 
-  // Funzione di easing smooth
-  function smoothstep(edge0, edge1, x) {
-    const t = Math.max(0, Math.min(1, (x - edge0) / (edge1 - edge0)));
-    return t * t * (3 - 2 * t);
-  }
-
   window.addEventListener('scroll', onScroll, { passive: true });
-  // Imposta il body celeste al caricamento e sincronizza lo scroll
   document.body.style.background = '#9FD5F1';
   onScroll();
-
-  // ═══════════════════════════════════════════
-  //  SKILL BARS — Anima allo scroll
-  // ═══════════════════════════════════════════
-
-  const skObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          const fill = e.target;
-          const w = fill.getAttribute('data-w');
-          setTimeout(() => {
-            fill.style.width = w + '%';
-            fill.setAttribute('data-visible', 'true');
-          }, 400);
-          skObs.unobserve(fill);
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-  document.querySelectorAll('.sk-fill').forEach((el) => skObs.observe(el));
 </script>

@@ -1,7 +1,6 @@
 ---
 
 import Layout from '../layouts/Layout.astro'
-import Background from '../components/Background.astro'
 import BloomFlower from '../components/BloomFlower.astro'
 import ProjectModal from '../components/ProjectModal.astro'
 
@@ -9,24 +8,24 @@ const progetti = [
   {
   id: 1,
   titolo: "Portfolio personale",
-
+  anno: "2026",
   stato: "completed",
+  demo: "https://portfolio-xi-three-bsm0pj3kjd.vercel.app/", 
 
   descrizione:
-    "Portfolio personale progettato e sviluppato da zero per presentare il mio percorso come Front-end Developer e UX/UI Designer.",
+    "Front-end Developer e UX/UI Designer.",
 
 
   obiettivo:
-    "Creare un'esperienza digitale moderna che unisse design, interazione e sviluppo front-end, evitando il classico portfolio statico.",
+    "Portfolio personale pensato per presentare progetti reali con un layout pulito, leggero da navigare e ottimizzato per la lettura sia da desktop che da mobile.",
 
 
   approccio:
-    "Ho progettato l'interfaccia in Figma, definito una struttura responsive e sviluppato componenti riutilizzabili con Astro, curando animazioni, micro-interazioni e performance.",
+    "Ho progettato l'interfaccia, definito una struttura responsive e sviluppato componenti riutilizzabili con Astro, curando animazioni, micro-interazioni e performance.",
 
     ruolo: [
       "UX/UI Design",
-      "Front-end Development",
-      "Interaction Design"
+      "Front-end Development"
     ],
 
   tecnologie: [
@@ -51,12 +50,18 @@ const progetti = [
 
 
   github:
-    "https://github.com/olgamarrazzo",
+    "https://github.com/olgamarrazzo/portfolio",
 
 
-  immagine:
-    "/portfolio-preview.png"
-},
+
+  immagine: "/portfolio-preview.png",
+  
+  galleria: [
+    "/portfolio-preview.png",
+    "/portfolio-preview2.png",
+    "/portfolio-preview3.png"
+  ],
+  },
 
   {
   id: 2,
@@ -87,617 +92,323 @@ const progetti = [
   title="Progetti — Olga Marrazzo"
   description="Progetti realizzati da Olga Marrazzo: esperienze digitali, interfacce e sviluppo front-end."
 >
-<Background />
 
-<section
-class="relative z-10 pt-32 pb-24 md:pt-40 md:pb-32 max-w-6xl mx-auto px-6"
->
+<section class="relative z-10 pt-32 pb-24 md:pt-40 md:pb-32 max-w-6xl mx-auto px-6">
 
+  <!-- Header -->
+  <div class="text-center max-w-3xl mx-auto mb-20 rv">
+    <span class="section-label">I miei progetti</span>
+    <h1 class="section-title mt-5">
+    Codice, design, cura per i dettagli
+      attraverso il codice.
+    </h1>
+    <p class="mt-12 text-base text-white/55 leading-relaxed">
+      Una selezione dei lavori a cui ho dato forma, tra progetti completati e altri ancora in costruzione.
+    </p>
+  </div>
 
-<!-- Header -->
-
-<div class="text-center max-w-3xl mx-auto mb-20 rv">
-
-
-<span class="section-label">
-  I miei progetti
-</span>
-
-
-<h1 class="section-title mt-5">
-  Ogni progetto nasce da un'idea,
-  cresce con cura e prende forma
-  attraverso il codice.
-</h1>
-
-
-<p class="mt-8 text-base text-white/55 leading-relaxed">
-  Alcuni progetti sono già sbocciati,
-  altri stanno ancora crescendo.
-  Ogni esperienza rappresenta una nuova tappa
-  del mio percorso nel mondo del web design.
-</p>
-
-
+  <!-- Projects Grid -->
+  <div class="grid md:grid-cols-2 gap-8">
+    {progetti.map((p, i) => (
+      <article
+        data-project={p.stato === "completed" ? JSON.stringify(p) : undefined}
+        class:list={[
+          "group relative overflow-hidden rounded-[30px] transition-all duration-500",
+          p.stato === "completed" ? "gc cursor-pointer" : "gc cursor-default"
+        ]}
+      >
+        {/* Immagine o Fiore */}
+        {p.immagine ? (
+          <div class="overflow-hidden rounded-t-[30px]">
+            <img
+              src={p.immagine}
+              alt={`Screenshot ${p.titolo}`}
+              class="w-full aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+        ) : (
+         <div class="relative aspect-[16/10] overflow-hidden rounded-t-[30px] bg-white/[0.02]">
+  <div class="absolute inset-0 flex flex-col items-center justify-center gap-5">
+    <BloomFlower />
+    <p class="text-sm tracking-wide text-white/40">
+      In sviluppo
+    </p>
+  </div>
 </div>
-
-
-
-<!-- Projects -->
-
-<div class="grid md:grid-cols-2 gap-8">
-
-
-{progetti.map((p, i) => (
-
-<article
-
-data-project={
-  p.stato === "completed"
-  ? JSON.stringify(p)
-  : undefined
-}
-
-class:list={[
-  "group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-cyan-300/30",
-
-  p.stato === "completed"
-  ? "cursor-pointer"
-  : "cursor-default"
-
-]}
-
->
-
-
-<!-- Immagine -->
-
-{p.immagine ? (
-
-<div class="overflow-hidden">
-
-<img
-
-src={p.immagine}
-
-alt={`Screenshot ${p.titolo}`}
-
-class="
-w-full
-aspect-[16/10]
-object-cover
-transition-transform
-duration-700
-group-hover:scale-105
-"
-
-/>
-
-</div>
-
-
-) : (
-
-
-<div
-class="
-relative
-h-[260px]
-flex
-flex-col
-items-center
-justify-center
-gap-5
-"
->
-
-<BloomFlower />
-
-
-<p class="text-sm tracking-wide text-white/40">
-In sviluppo
-</p>
-
-
-</div>
-
-
-)}
-
-
-
-<!-- Contenuto -->
-
-<div class="p-8">
-
-
-<div class="flex justify-between items-start gap-4 mb-5">
-
-
-<h2
-class="
-text-xl
-font-medium
-tracking-tight
-text-white
-"
->
-
-{p.titolo}
-
-</h2>
-
-
-
-{p.stato === "completed" && (
-
-<span
-class="
-text-xs
-px-3
-py-1
-rounded-full
-bg-cyan-400/10
-text-cyan-300
-border
-border-cyan-300/20
-"
->
-
-Completato
-
-</span>
-
-)}
-
-
-
-{p.stato === "development" && (
-
-<span
-class="
-text-xs
-px-3
-py-1
-rounded-full
-bg-purple-400/10
-text-purple-300
-border
-border-purple-300/20
-"
->
-
-In sviluppo
-
-</span>
-
-)}
-
-
-
-{p.stato === "concept" && (
-
-<span
-class="
-text-xs
-px-3
-py-1
-rounded-full
-bg-white/5
-text-white/40
-border
-border-white/10
-"
->
-
-Concept
-
-</span>
-
-)}
-
-
-
-</div>
-
-
-
-
-<p
-class="
-text-sm
-leading-relaxed
-text-white/50
-"
->
-
-{p.descrizione}
-
-</p>
-
-
-
-
-<!-- Tecnologie -->
-
-{p.tecnologie.length > 0 && (
-
-<div
-class="
-flex
-flex-wrap
-gap-2
-mt-7
-"
->
-
-{p.tecnologie.map((t) => (
-
-<span
-class="
-text-xs
-px-3
-py-1
-rounded-full
-bg-white/5
-border
-border-white/10
-text-white/60
-"
->
-
-{t}
-
-</span>
-
-))}
-
-
-</div>
-
-)}
-
-
-
-
-<!-- CTA hover -->
-{p.stato === "completed" && (
-
-<div
-class="
-mt-8
-flex
-items-center
-gap-2
-text-sm
-font-medium
-text-cyan-300
-opacity-0
-translate-y-3
-group-hover:opacity-100
-group-hover:translate-y-0
-transition-all
-duration-300
-"
->
-
-Apri progetto
-
-<iconify-icon
-icon="lucide:arrow-right"
-width="16"
-></iconify-icon>
-
-</div>
-
-)}
-
-
-
-</div>
-
-
-
-</article>
-
-
-))}
-
-
-</div>
-
-
-
-
-
-<!-- CTA -->
-
-
-<div
-class="rv mt-20 text-center"
->
-
-
-<p class="text-sm text-white/35 mb-6">
-Vuoi collaborare a un nuovo progetto?
-</p>
-
-
-<a
-href="/contatti"
-class="btn-primary"
->
-
-<iconify-icon
-icon="lucide:send"
-width="16"
-class="mr-2">
-</iconify-icon>
-
-Scrivimi
-
-</a>
-
-
-</div>
-
-
+        )}
+
+        {/* Contenuto */}
+        <div class="p-8">
+          <div class="flex justify-between items-start gap-4 mb-5">
+            <h2 class="text-xl font-medium tracking-tight text-white">
+              {p.titolo}
+            </h2>
+
+            {p.stato === "completed" && (
+              <span class="text-xs px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-300 border border-cyan-300/20 whitespace-nowrap">
+                Completato
+              </span>
+            )}
+            {p.stato === "development" && (
+              <span class="text-xs px-3 py-1 rounded-full bg-purple-400/10 text-purple-300 border border-purple-300/20 whitespace-nowrap">
+                In sviluppo
+              </span>
+            )}
+            {p.stato === "concept" && (
+              <span class="text-xs px-3 py-1 rounded-full bg-white/5 text-white/40 border border-white/10 whitespace-nowrap">
+                Concept
+              </span>
+            )}
+          </div>
+
+          <p class="text-sm leading-relaxed text-white/50">
+            {p.descrizione}
+          </p>
+
+          {/* Tecnologie */}
+          {p.tecnologie.length > 0 && (
+            <div class="flex flex-wrap gap-2 mt-7">
+              {p.tecnologie.map((t) => (
+                <span class="tech-tag-sm">{t}</span>
+              ))}
+            </div>
+          )}
+
+          {/* CTA hover */}
+          {p.stato === "completed" && (
+            <div class="mt-8 flex items-center gap-2 text-sm font-medium text-cyan-300 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+              Apri progetto
+              <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
+            </div>
+          )}
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- CTA -->
+  <div class="rv mt-20 text-center">
+    <p class="text-sm text-white mb-6">Vuoi collaborare a un nuovo progetto?</p>
+    <a href="/contatti" class="btn-primary">
+      <iconify-icon icon="lucide:send" width="16" class="mr-2"></iconify-icon>
+      Scrivimi
+    </a>
+  </div>
 
 </section>
 
 <ProjectModal />
 
 <script>
-
-const modal = document.querySelector("#project-modal")
-const modalBox = document.querySelector("#modal-box")
-const closeButton = document.querySelector("#modal-close")
-const overlay = document.querySelector("#modal-overlay")
-
-const title = document.querySelector("#modal-title")
-const description = document.querySelector("#modal-description")
-const tags = document.querySelector("#modal-tags")
-const image = document.querySelector("#modal-image")
-const links = document.querySelector("#modal-links")
-
-const objective =
-document.querySelector("#modal-objective")
-
-const approach =
-document.querySelector("#modal-approach")
-
-const skills =
-document.querySelector("#modal-skills")
-
-const role =
-document.querySelector("#modal-role")
-
-const cards = document.querySelectorAll("[data-project]")
-
-
-cards.forEach((card) => {
-
-  card.addEventListener("click", () => {
-
-    const data = card.dataset.project
-
-    if (!data) return
-
-
-    const project = JSON.parse(data)
-
-
-    if (!modal) return
-
-
-    title.textContent = project.titolo
-
-    description.textContent = project.descrizione
-
-    objective.textContent =
-project.obiettivo
-
-
-approach.textContent =
-project.approccio
-
-
-skills.innerHTML = ""
-role.innerHTML = ""
-
-
-project.ruolo?.forEach((item)=>{
-
-role.innerHTML += `
-
-<span
-class="
-text-xs
-px-3
-py-1
-rounded-full
-bg-purple-400/10
-border
-border-purple-300/20
-text-purple-200
-"
->
-${item}
-</span>
-
-`
-
-})
-
-project.competenze.forEach((skill)=>{
-
-  skills.innerHTML += `
-
-  <span
-  class="
-  text-xs
-  px-3
-  py-1
-  rounded-full
-  bg-cyan-400/10
-  border
-  border-cyan-300/20
-  text-cyan-200
-  "
-  >
-  ${skill}
-  </span>
-
-  `
-
-})
-
-
-    // Tecnologie
-
-    tags.innerHTML = ""
-
-    project.tecnologie.forEach((tech) => {
-
-      tags.innerHTML += `
-
-      <span
-        class="
-        text-xs
-        px-3
-        py-1
-        rounded-full
-        bg-white/5
-        border
-        border-white/10
-        text-white/60
-        "
-      >
-        ${tech}
-      </span>
-
-      `
-
-    })
-
-
-    // Immagine
-
-    image.innerHTML = project.immagine
-      ? `
-
-      <img
-        src="${project.immagine}"
-        alt="${project.titolo}"
-        class="
-        rounded-2xl
-        w-full
-        "
-      />
-
-      `
-      : ""
-
-
-
-    // Link
-
-    links.innerHTML = ""
-
-
-    if (project.github) {
-
-  links.innerHTML += `
-
-    <a
-      href="${project.github}"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn-primary"
-    >
-      Vedi codice
-    </a>
-
-  `
-
-}
-
-
-
-    // Apertura modal
-
-    modal.classList.remove("hidden")
-    modal.classList.add("flex")
-
-
-    requestAnimationFrame(() => {
-
-      modalBox.classList.remove(
-        "opacity-0",
-        "translate-y-8"
-      )
-
-    })
-
-
+  const modal = document.querySelector("#project-modal")
+  const modalBox = document.querySelector("#modal-box")
+  const closeButton = document.querySelector("#modal-close")
+  const overlay = document.querySelector("#modal-overlay")
+
+  const title = document.querySelector("#modal-title")
+  const description = document.querySelector("#modal-description")
+  const tags = document.querySelector("#modal-tags")
+  const image = document.querySelector("#modal-image")
+  const links = document.querySelector("#modal-links")
+
+  const objective = document.querySelector("#modal-objective")
+  const approach = document.querySelector("#modal-approach")
+  const skills = document.querySelector("#modal-skills")
+
+  const footerRole = document.querySelector("#modal-footer-role")
+  const footerYear = document.querySelector("#modal-footer-year")
+  const footerStatus = document.querySelector("#modal-footer-status")
+
+  const cards = document.querySelectorAll("[data-project]")
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const data = card.dataset.project
+      if (!data) return
+
+      const project = JSON.parse(data)
+      if (!modal) return
+
+      // Dati testuali principali
+      title.textContent = project.titolo
+      description.textContent = project.descrizione
+      objective.textContent = project.obiettivo
+      approach.textContent = project.approccio
+
+      // Competenze
+      skills.innerHTML = ""
+      if (project.competenze) {
+        skills.innerHTML = "<ul class='modal-list'>"
+        project.competenze.forEach((skill) => {
+          skills.innerHTML += `
+            <li class="modal-li">
+              <span class="cyan-dot">✓</span>
+              <span class="skill-text">${skill}</span>
+            </li>
+          `
+        })
+        skills.innerHTML += "</ul>"
+      }
+
+
+      // Footer Meta-Dati (Ruolo, Anno, Stato)
+      if (footerRole) {
+        footerRole.textContent = project.ruolo ? project.ruolo.join(" · ") : "—";
+      }
+
+      if (footerYear) {
+        footerYear.textContent = project.anno || "—";
+      }
+
+      if (footerStatus) {
+        const statoMap = {
+          "completed": "Completato",
+          "development": "In sviluppo",
+          "concept": "Concept"
+        };
+        
+        footerStatus.textContent = statoMap[project.stato] || project.stato;
+        
+        footerStatus.className = "value"; 
+        if (project.stato === "completed") footerStatus.classList.add("online");
+        else if (project.stato === "development") footerStatus.classList.add("dev");
+        else if (project.stato === "concept") footerStatus.classList.add("concept");
+      }
+
+      // Tecnologie
+      tags.innerHTML = ""
+      project.tecnologie.forEach((tech) => {
+        tags.innerHTML += `
+          <span class="text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/60">
+            ${tech}
+          </span>
+        `
+      })
+
+      // Immagine
+      image.innerHTML = project.immagine
+        ? `<img src="${project.immagine}" alt="${project.titolo}" class="rounded-2xl w-full" />`
+        : ""
+
+                 // Link (Top Links: Demo e Codice)
+      links.innerHTML = ""
+      if (project.demo) {
+        links.innerHTML += `
+          <a href="${project.demo}" target="_blank" rel="noopener noreferrer" class="btn-outline">
+            ↗ Live demo
+          </a>
+        `
+      }
+      if (project.github) {
+        links.innerHTML += `
+          <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn-outline">
+            </> Vedi codice
+          </a>
+        `
+      }
+
+            // Galleria Immagini
+      const gallery = document.querySelector("#modal-gallery")
+      if (gallery) {
+        gallery.innerHTML = ""
+        if (project.galleria && project.galleria.length > 0) {
+          project.galleria.forEach((imgSrc) => {
+            gallery.innerHTML += `
+              <img src="${imgSrc}" alt="Galleria ${project.titolo}" loading="lazy" />
+            `
+          })
+        } else {
+          gallery.style.display = 'none' // Nasconde la sezione se non ci sono img
+        }
+      }
+
+      // Footer CTA
+      const footerCta = document.querySelector("#modal-footer-cta")
+      if (footerCta) {
+        footerCta.innerHTML = ""
+        
+        if (project.demo) {
+          footerCta.innerHTML += `
+            <a href="${project.demo}" target="_blank" rel="noopener noreferrer" class="btn-outline">
+              Visita il sito
+            </a>
+          `
+        } 
+      }
+
+      // Apertura modal
+      modal.classList.remove("hidden")
+      modal.classList.add("flex")
+
+      requestAnimationFrame(() => {
+        modalBox.classList.remove("opacity-0", "translate-y-8")
+      })
+
+    }) // <--- La parentesi del click viene chiusa SOLO ORA!
   })
 
+  // Chiusura
+  function closeModal() {
+    if (!modal || !modalBox) return
 
-})
-
-
-
-// Chiusura
-
-function closeModal() {
-
-  if (
-  !modal ||
-  !modalBox ||
-  !objective ||
-  !approach ||
-  !skills
-) return
-
-
-  setTimeout(() => {
-
-    modal.classList.add("hidden")
-    modal.classList.remove("flex")
-
-  }, 300)
-
-}
-
-
-
-closeButton?.addEventListener(
-  "click",
-  closeModal
-)
-
-
-overlay?.addEventListener(
-  "click",
-  closeModal
-)
-
-
-
-document.addEventListener(
-  "keydown",
-  (event) => {
-
-    if (event.key === "Escape") {
-
-      closeModal()
-
-    }
-
+    setTimeout(() => {
+      modalBox.classList.add("opacity-0", "translate-y-8")
+      modal.classList.add("hidden")
+      modal.classList.remove("flex")
+    }, 300)
   }
-)
 
+  closeButton?.addEventListener("click", closeModal)
+  overlay?.addEventListener("click", closeModal)
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeModal()
+  })
 
 </script>
+
+<style>
+  /* Titolo pagina: stesso font e peso dell'hero name in index.astro */
+  section.relative.z-10 > .rv > .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+
+  /* ═══ CARD PROGETTI: Vetro su sfondo 033453 ═══ */
+  .gc {
+    /* Forza il bordo a 30px per combaciare con l'immagine rounded-t-[30px] */
+    border-radius: 30px !important; 
+    
+    /* Sfondo vetro trasparente */
+    background: rgba(3, 52, 83, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    
+    /* Riflesso in alto */
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 0 30px rgba(255, 255, 255, 0.03),
+      0 8px 32px -8px rgba(0, 0, 0, 0.3);
+      
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Sfumatura luce alta */
+  .gc::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    /* Aggiornato anche qui a 30px per non lasciare spigoli scoperti */
+    border-radius: 30px 30px 0 0; 
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    pointer-events: none;
+  }
+</style>
 
 </Layout>

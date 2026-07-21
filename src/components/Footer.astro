@@ -1,16 +1,59 @@
 ---
 ---
 
-<footer class="relative z-10 py-7 px-6 border-t border-white/[0.04]" style="background: #0a0618;">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-    <p class="text-[11px] text-white/45">&copy; 2026 Olga Marrazzo. Tutti i diritti riservati.</p>
-    <div class="flex items-center gap-5">
-      <a href="https://www.linkedin.com/in/olga-marrazzo-5808402a5" target="_blank" rel="noopener noreferrer" aria-label="Profilo LinkedIn di Olga Marrazzo" class="text-[11px] text-white/60 hover:text-cyan-400 transition-all duration-300 hover:-translate-y-0.5">
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2025 Olga Marrazzo. Tutti i diritti riservati.</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/olga-marrazzo-5808402a5" target="_blank" rel="noopener noreferrer" aria-label="Profilo LinkedIn di Olga Marrazzo" class="footer-social">
         <iconify-icon icon="mdi:linkedin" width="18" aria-hidden="true"></iconify-icon>
       </a>
-      <a href="https://github.com/olgamarrazzo" target="_blank" rel="noopener noreferrer" aria-label="Profilo GitHub di Olga Marrazzo" class="text-[11px] text-white/60 hover:text-cyan-400 transition-all duration-300 hover:-translate-y-0.5">
+      <a href="https://github.com/olgamarrazzo" target="_blank" rel="noopener noreferrer" aria-label="Profilo GitHub di Olga Marrazzo" class="footer-social">
         <iconify-icon icon="mdi:github" width="18" aria-hidden="true"></iconify-icon>
       </a>
     </div>
   </div>
 </footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    z-index: 10;
+    padding: 1.75rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: #033453;
+  }
+  .footer-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .footer-inner {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 0;
+  }
+  .footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .footer-social {
+    color: rgba(255, 255, 255, 0.45);
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+  }
+  .footer-social:hover {
+    color: #67e8f9;
+    transform: translateY(-2px);
+  }
+</style>

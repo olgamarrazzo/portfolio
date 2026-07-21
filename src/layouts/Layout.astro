@@ -1,9 +1,13 @@
 ---
 interface Props {
   title: string
+  description?: string
 }
 
-const { title } = Astro.props
+const { title, description = "Olga Marrazzo — Frontend Developer. Creo esperienze digitali tra design e tecnologia." } = Astro.props
+
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/';
 
 import '../styles/global.css'
 import '../styles/theme.css'
@@ -20,13 +24,13 @@ import Footer from '../components/Footer.astro'
     <title>{title}</title>
 
     <!-- SEO -->
-    <meta name="description" content="Olga Marrazzo — Frontend Developer. Creo esperienze digitali tra design e tecnologia." />
+    <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content="Olga Marrazzo — Frontend Developer. Creo esperienze digitali tra design e tecnologia." />
+    <meta property="og:description" content={description} />
     <meta property="og:image" content="https://portfolio-xi-three-bsm0pj3kjd.vercel.app/portfolio-preview.png" />
     <meta property="og:url" content="https://portfolio-xi-three-bsm0pj3kjd.vercel.app" />
     <meta property="og:locale" content="it_IT" />
@@ -34,12 +38,12 @@ import Footer from '../components/Footer.astro'
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content="Olga Marrazzo — Frontend Developer. Creo esperienze digitali tra design e tecnologia." />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://portfolio-xi-three-bsm0pj3kjd.vercel.app/portfolio-preview.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
@@ -48,8 +52,8 @@ import Footer from '../components/Footer.astro'
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      background: #F8FAFC;
-      color: #082F49;
+      background: #0a0618;
+      color: #e2e8f0;
       font-family: 'Inter', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -58,72 +62,90 @@ import Footer from '../components/Footer.astro'
     ::-webkit-scrollbar {
       width: 6px;
     }
-
     ::-webkit-scrollbar-track {
-      background: #F8FAFC;
+      background: #0a0618;
     }
-
     ::-webkit-scrollbar-thumb {
-      background: rgba(15, 139, 184, 0.35);
+      background: rgba(0, 212, 255, 0.2);
       border-radius: 3px;
     }
-
     ::-webkit-scrollbar-thumb:hover {
-      background: rgba(15, 139, 184, 0.55);
+      background: rgba(0, 212, 255, 0.4);
     }
 
     ::selection {
-      background: rgba(15, 139, 184, 0.2);
-      color:rgb(204, 221, 233);
+      background: rgba(0, 212, 255, 0.25);
+      color: #ffffff;
     }
 
-    /* Focus visible — navigazione da tastiera */
-      :focus-visible {
-        outline: 2px solid rgba(0, 212, 255, 0.6);
-        outline-offset: 3px;
-        border-radius: 4px;
-      }
-      :focus:not(:focus-visible) {
-        outline: none;
-      }
+    :focus-visible {
+      outline: 2px solid rgba(0, 212, 255, 0.6);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
 
-      /* Skip to content */
-      .skip-link {
-        position: absolute;
-        top: -100%;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 9999;
-        padding: 10px 24px;
-        border-radius: 0 0 12px 12px;
-        background: rgba(15, 139, 184, 0.1);
-        backdrop-filter: blur(12px);
-        color: #0F8BB8;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 0.04em;
-        text-decoration: none;
-        border: 1px solid rgba(15, 139, 184, 0.25);
-        transition: top 0.25s ease;
-      }
-      .skip-link:focus {
-        top: 0;
-        outline: none;
-      }
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      padding: 10px 24px;
+      border-radius: 0 0 12px 12px;
+      background: rgba(0, 212, 255, 0.15);
+      backdrop-filter: blur(12px);
+      color: #67e8f9;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      transition: top 0.25s ease;
+    }
+    .skip-link:focus {
+      top: 0;
+      outline: none;
+    }
     </style>
   </head>
 
   <body>
-    <a href="#main-content" class="skip-link">Vai al contenuto principale</a>
-    <div style="position: relative; z-index: 50;">
-      <Nav />
-    </div>
-    <main id="main-content">
-      <slot />
+    {/* HTML Condizionale (senza lo script dentro) */}
+    {!isHome && (
+      <div class="fixed inset-0 z-0 overflow-hidden">
+        <div id="hero-parallax" class="absolute inset-[-60px]">
+          <img src="/hero-bg.png" alt="" class="w-full h-full object-cover object-center scale-105" />
+        </div>
+        
+              <!-- Overlay blu oceano: chiaro ai bordi, trasparente al centro -->
+              <div class="absolute inset-0 bg-gradient-to-b from-[#033453]/80 via-transparent to-[#033453]/80 pointer-events-none"></div>
+              <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-cyan-400/[0.08] blur-3xl"></div>
+        <div class="absolute bottom-0 -left-40 w-[500px] h-[500px] rounded-full bg-purple-500/[0.08] blur-3xl"></div>
+        
+        <div class="noise-page"></div>
+      </div>
+    )}
+
+    {/* Script FUORI dalla condizione */}
+    <script>
+      const bg = document.querySelector("#hero-parallax");
+      if (bg) {
+        window.addEventListener("scroll", () => {
+          const scroll = window.scrollY;
+          bg.style.transform = `translateY(${scroll * 0.02}px)`;
+        });
+      }
+    </script>
+
+    <Nav />
+
+  <slot />
     </main>
     <Footer />
 
-    <!-- Reveal on scroll -->
     <script>
       const rvObs = new IntersectionObserver(
         (entries) => {

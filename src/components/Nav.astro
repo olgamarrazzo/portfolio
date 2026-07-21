@@ -3,29 +3,118 @@ const currentPath = Astro.url.pathname
 const isActive = (path: string) => currentPath === path
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white/[0.03] dark:bg-[rgba(10,6,24,0.3)] backdrop-blur-xl border-b border-white/[0.08] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_4px_30px_rgba(0,0,0,0.1)]" role="navigation" aria-label="Navigazione principale">
-  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="/" class:list={[
-      'text-xl font-semibold tracking-tight transition-all duration-300',
-      isActive('/') ? 'bg-gradient-to-r from-cyan-300 to-fuchsia-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(34,211,238,0.4)]' : 'bg-gradient-to-r from-cyan-300 to-fuchsia-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(34,211,238,0.25)]'
-    ]} aria-label="Home — Olga Marrazzo" aria-current={isActive('/') ? 'page' : undefined}>
+<nav class="nav-bar" id="navBar" role="navigation" aria-label="Navigazione principale">
+  <div class="nav-inner">
+    <a
+      href="/"
+      class:list={[
+        'nav-logo',
+        isActive('/') && 'nav-logo--active'
+      ]}
+      aria-label="Home — Olga Marrazzo"
+      aria-current={isActive('/') ? 'page' : undefined}
+    >
       OM
     </a>
-    <div class="flex items-center gap-8">
-      <a href="/progetti" class:list={[
-        'text-[11px] font-medium tracking-[0.16em] uppercase transition-colors duration-300 relative pb-0.5',
-        isActive('/progetti') ? 'text-cyan-400' : 'text-white/65 hover:text-white'
-      ]} aria-current={isActive('/progetti') ? 'page' : undefined}>
+    <div class="nav-links">
+      <a
+        href="/progetti"
+        class:list={[
+          'nav-link',
+          isActive('/progetti') && 'nav-link--active'
+        ]}
+        aria-current={isActive('/progetti') ? 'page' : undefined}
+      >
         Progetti
-        {isActive('/progetti') && <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-[2px] rounded-full bg-cyan-400"></span>}
+        {isActive('/progetti') && <span class="nav-dot"></span>}
       </a>
-      <a href="/contatti" class:list={[
-        'text-[11px] font-medium tracking-[0.16em] uppercase transition-colors duration-300 relative pb-0.5',
-        isActive('/contatti') ? 'text-cyan-400' : 'text-white/65 hover:text-white'
-      ]} aria-current={isActive('/contatti') ? 'page' : undefined}>
+      <a
+        href="/contatti"
+        class:list={[
+          'nav-link',
+          isActive('/contatti') && 'nav-link--active'
+        ]}
+        aria-current={isActive('/contatti') ? 'page' : undefined}
+      >
         Contatti
-        {isActive('/contatti') && <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-[2px] rounded-full bg-cyan-400"></span>}
+        {isActive('/contatti') && <span class="nav-dot"></span>}
       </a>
     </div>
   </div>
 </nav>
+
+<style>
+    .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    /* Vetro leggero e trasparente di base (Non serve più forzarlo via JS!) */
+    background: transparent;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.4s ease, border-color 0.4s ease;
+  }
+  .nav-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+    .nav-logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #67e8f9, #d946ef);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    opacity: 1; /* Portato a 1 per massima visibilità */
+    /* GLOW COSTANTE: Crea l'alone ciano/fucsia dietro le lettere */
+    filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.6)) drop-shadow(0 0 12px rgba(217, 70, 239, 0.3));
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  
+  /* All'hover il glow diventa più intenso */
+  .nav-logo:hover { 
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.8)) drop-shadow(0 0 20px rgba(217, 70, 239, 0.5));
+  }
+  .nav-logo--active {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.4));
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-link {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.55);
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-link:hover { color: rgba(255, 255, 255, 0.9); }
+  .nav-link--active { color: #67e8f9; }
+  .nav-dot {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 2px;
+    border-radius: 1px;
+    background: #67e8f9;
+  }
+</style>
